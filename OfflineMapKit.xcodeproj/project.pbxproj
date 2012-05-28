@@ -1,0 +1,651 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		66F5F13314DB195B0068FD20 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 66F5F13614DB195B0068FD20 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				66F5F13A14DB19B20068FD20 /* Build Framework */,
+			);
+			dependencies = (
+				664A26AC14E330B700C297E6 /* PBXTargetDependency */,
+				66F5F13914DB19940068FD20 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		66E8B6D714D899500074EAA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E8B6D614D899500074EAA4 /* Foundation.framework */; };
+		66E8B6E314D89CCE0074EAA4 /* OfflineMapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8B6DB14D899500074EAA4 /* OfflineMapKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76437E87156EEF8100598CDB /* OMKCXX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76437E86156EEF8000598CDB /* OMKCXX.cpp */; };
+		76437E8A156EF0A300598CDB /* psimpl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 76437E89156EF0A300598CDB /* psimpl.hpp */; };
+		76437E8B156EFC4A00598CDB /* OMKPolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C5C156EAE6400C79F3F /* OMKPolylineView.m */; };
+		BEAC4C6B156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C37156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h */; };
+		BEAC4C6C156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C38156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m */; };
+		BEAC4C6D156EAE6400C79F3F /* OfflineMapKit-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C39156EAE6400C79F3F /* OfflineMapKit-Private.h */; };
+		BEAC4C6E156EAE6400C79F3F /* OfflineMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C3A156EAE6400C79F3F /* OfflineMapKit.m */; };
+		BEAC4C6F156EAE6400C79F3F /* OMKAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C3B156EAE6400C79F3F /* OMKAnnotation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C70156EAE6400C79F3F /* OMKAnnotationContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C3C156EAE6400C79F3F /* OMKAnnotationContainerView.h */; };
+		BEAC4C71156EAE6400C79F3F /* OMKAnnotationContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C3D156EAE6400C79F3F /* OMKAnnotationContainerView.m */; };
+		BEAC4C72156EAE6400C79F3F /* OMKAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C3E156EAE6400C79F3F /* OMKAnnotationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C73156EAE6400C79F3F /* OMKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C3F156EAE6400C79F3F /* OMKAnnotationView.m */; };
+		BEAC4C74156EAE6400C79F3F /* OMKBase.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C40156EAE6400C79F3F /* OMKBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C75156EAE6400C79F3F /* OMKBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C41156EAE6400C79F3F /* OMKBase.m */; };
+		BEAC4C76156EAE6400C79F3F /* OMKCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C42156EAE6400C79F3F /* OMKCalloutView.h */; };
+		BEAC4C77156EAE6400C79F3F /* OMKCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C43156EAE6400C79F3F /* OMKCalloutView.m */; };
+		BEAC4C78156EAE6400C79F3F /* OMKMapTileProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C44156EAE6400C79F3F /* OMKMapTileProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C79156EAE6400C79F3F /* OMKMapTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C45156EAE6400C79F3F /* OMKMapTileView.h */; };
+		BEAC4C7A156EAE6400C79F3F /* OMKMapTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C46156EAE6400C79F3F /* OMKMapTileView.m */; };
+		BEAC4C7B156EAE6400C79F3F /* OMKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C47156EAE6400C79F3F /* OMKMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C7C156EAE6400C79F3F /* OMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C48156EAE6400C79F3F /* OMKMapView.m */; };
+		BEAC4C7D156EAE6400C79F3F /* OMKMapViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C49156EAE6400C79F3F /* OMKMapViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C7E156EAE6400C79F3F /* OMKMultiPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C4A156EAE6400C79F3F /* OMKMultiPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C7F156EAE6400C79F3F /* OMKMultiPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C4B156EAE6400C79F3F /* OMKMultiPoint.m */; };
+		BEAC4C80156EAE6400C79F3F /* OMKOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C4C156EAE6400C79F3F /* OMKOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C81156EAE6400C79F3F /* OMKOverlayContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C4D156EAE6400C79F3F /* OMKOverlayContainerView.h */; };
+		BEAC4C82156EAE6400C79F3F /* OMKOverlayContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C4E156EAE6400C79F3F /* OMKOverlayContainerView.m */; };
+		BEAC4C83156EAE6400C79F3F /* OMKOverlayPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C4F156EAE6400C79F3F /* OMKOverlayPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C84156EAE6400C79F3F /* OMKOverlayPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C50156EAE6400C79F3F /* OMKOverlayPathView.m */; };
+		BEAC4C85156EAE6400C79F3F /* OMKOverlayTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C51156EAE6400C79F3F /* OMKOverlayTileView.h */; };
+		BEAC4C86156EAE6400C79F3F /* OMKOverlayTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C52156EAE6400C79F3F /* OMKOverlayTileView.m */; };
+		BEAC4C87156EAE6400C79F3F /* OMKOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C53156EAE6400C79F3F /* OMKOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C88156EAE6400C79F3F /* OMKOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C54156EAE6400C79F3F /* OMKOverlayView.m */; };
+		BEAC4C89156EAE6400C79F3F /* OMKPinAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C55156EAE6400C79F3F /* OMKPinAnnotationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C8A156EAE6400C79F3F /* OMKPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C56156EAE6400C79F3F /* OMKPinAnnotationView.m */; };
+		BEAC4C8B156EAE6400C79F3F /* OMKPointAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C57156EAE6400C79F3F /* OMKPointAnnotation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C8C156EAE6400C79F3F /* OMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C58156EAE6400C79F3F /* OMKPointAnnotation.m */; };
+		BEAC4C8D156EAE6400C79F3F /* OMKPolyline.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C59156EAE6400C79F3F /* OMKPolyline.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C8E156EAE6400C79F3F /* OMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C5A156EAE6400C79F3F /* OMKPolyline.m */; };
+		BEAC4C8F156EAE6400C79F3F /* OMKPolylineView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C5B156EAE6400C79F3F /* OMKPolylineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C91156EAE6400C79F3F /* OMKScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C5D156EAE6400C79F3F /* OMKScrollView.h */; };
+		BEAC4C92156EAE6400C79F3F /* OMKScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C5E156EAE6400C79F3F /* OMKScrollView.m */; };
+		BEAC4C93156EAE6400C79F3F /* OMKShape.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C5F156EAE6400C79F3F /* OMKShape.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C94156EAE6400C79F3F /* OMKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C60156EAE6400C79F3F /* OMKShape.m */; };
+		BEAC4C95156EAE6400C79F3F /* OMKTiledLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C61156EAE6400C79F3F /* OMKTiledLayer.h */; };
+		BEAC4C96156EAE6400C79F3F /* OMKTiledLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C62156EAE6400C79F3F /* OMKTiledLayer.m */; };
+		BEAC4C99156EAE6400C79F3F /* OMKTileKey.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C65156EAE6400C79F3F /* OMKTileKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAC4C9A156EAE6400C79F3F /* OMKTileKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C66156EAE6400C79F3F /* OMKTileKey.m */; };
+		BEAC4C9B156EAE6400C79F3F /* UIColor+OMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C67156EAE6400C79F3F /* UIColor+OMKAdditions.h */; };
+		BEAC4C9C156EAE6400C79F3F /* UIColor+OMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C68156EAE6400C79F3F /* UIColor+OMKAdditions.m */; };
+		BEAC4C9D156EAE6400C79F3F /* UIImage+OMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C69156EAE6400C79F3F /* UIImage+OMKAdditions.h */; };
+		BEAC4C9E156EAE6400C79F3F /* UIImage+OMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C6A156EAE6400C79F3F /* UIImage+OMKAdditions.m */; };
+		BEAC4CA6156EB20400C79F3F /* OfflineMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEAC4CA5156EB20400C79F3F /* OfflineMapKit.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		664A26AB14E330B700C297E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E8B6CA14D899500074EAA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 664A269414E3265400C297E6;
+			remoteInfo = OfflineMapKitResources;
+		};
+		66F5F13814DB19940068FD20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E8B6CA14D899500074EAA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E8B6D214D899500074EAA4;
+			remoteInfo = OfflineMapKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		664A268414E3222700C297E6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		664A269514E3265400C297E6 /* OfflineMapKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineMapKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E8B6D314D899500074EAA4 /* libOfflineMapKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOfflineMapKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E8B6D614D899500074EAA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		66E8B6DA14D899500074EAA4 /* OfflineMapKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OfflineMapKit-Prefix.pch"; sourceTree = "<group>"; };
+		66E8B6DB14D899500074EAA4 /* OfflineMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineMapKit.h; sourceTree = "<group>"; };
+		76437E86156EEF8000598CDB /* OMKCXX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OMKCXX.cpp; sourceTree = "<group>"; };
+		76437E88156EEFAF00598CDB /* OMKCXX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMKCXX.h; sourceTree = "<group>"; };
+		76437E89156EF0A300598CDB /* psimpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = psimpl.hpp; sourceTree = "<group>"; };
+		BEAC4C37156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OMKDelayedBlock.h"; sourceTree = "<group>"; };
+		BEAC4C38156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+OMKDelayedBlock.m"; sourceTree = "<group>"; };
+		BEAC4C39156EAE6400C79F3F /* OfflineMapKit-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineMapKit-Private.h"; sourceTree = "<group>"; };
+		BEAC4C3A156EAE6400C79F3F /* OfflineMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineMapKit.m; sourceTree = "<group>"; };
+		BEAC4C3B156EAE6400C79F3F /* OMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKAnnotation.h; sourceTree = "<group>"; };
+		BEAC4C3C156EAE6400C79F3F /* OMKAnnotationContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKAnnotationContainerView.h; sourceTree = "<group>"; };
+		BEAC4C3D156EAE6400C79F3F /* OMKAnnotationContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKAnnotationContainerView.m; sourceTree = "<group>"; };
+		BEAC4C3E156EAE6400C79F3F /* OMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKAnnotationView.h; sourceTree = "<group>"; };
+		BEAC4C3F156EAE6400C79F3F /* OMKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKAnnotationView.m; sourceTree = "<group>"; };
+		BEAC4C40156EAE6400C79F3F /* OMKBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKBase.h; sourceTree = "<group>"; };
+		BEAC4C41156EAE6400C79F3F /* OMKBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKBase.m; sourceTree = "<group>"; };
+		BEAC4C42156EAE6400C79F3F /* OMKCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKCalloutView.h; sourceTree = "<group>"; };
+		BEAC4C43156EAE6400C79F3F /* OMKCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKCalloutView.m; sourceTree = "<group>"; };
+		BEAC4C44156EAE6400C79F3F /* OMKMapTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKMapTileProvider.h; sourceTree = "<group>"; };
+		BEAC4C45156EAE6400C79F3F /* OMKMapTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKMapTileView.h; sourceTree = "<group>"; };
+		BEAC4C46156EAE6400C79F3F /* OMKMapTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKMapTileView.m; sourceTree = "<group>"; };
+		BEAC4C47156EAE6400C79F3F /* OMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKMapView.h; sourceTree = "<group>"; };
+		BEAC4C48156EAE6400C79F3F /* OMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKMapView.m; sourceTree = "<group>"; };
+		BEAC4C49156EAE6400C79F3F /* OMKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKMapViewDelegate.h; sourceTree = "<group>"; };
+		BEAC4C4A156EAE6400C79F3F /* OMKMultiPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKMultiPoint.h; sourceTree = "<group>"; };
+		BEAC4C4B156EAE6400C79F3F /* OMKMultiPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKMultiPoint.m; sourceTree = "<group>"; };
+		BEAC4C4C156EAE6400C79F3F /* OMKOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKOverlay.h; sourceTree = "<group>"; };
+		BEAC4C4D156EAE6400C79F3F /* OMKOverlayContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKOverlayContainerView.h; sourceTree = "<group>"; };
+		BEAC4C4E156EAE6400C79F3F /* OMKOverlayContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKOverlayContainerView.m; sourceTree = "<group>"; };
+		BEAC4C4F156EAE6400C79F3F /* OMKOverlayPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKOverlayPathView.h; sourceTree = "<group>"; };
+		BEAC4C50156EAE6400C79F3F /* OMKOverlayPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKOverlayPathView.m; sourceTree = "<group>"; };
+		BEAC4C51156EAE6400C79F3F /* OMKOverlayTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKOverlayTileView.h; sourceTree = "<group>"; };
+		BEAC4C52156EAE6400C79F3F /* OMKOverlayTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKOverlayTileView.m; sourceTree = "<group>"; };
+		BEAC4C53156EAE6400C79F3F /* OMKOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKOverlayView.h; sourceTree = "<group>"; };
+		BEAC4C54156EAE6400C79F3F /* OMKOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKOverlayView.m; sourceTree = "<group>"; };
+		BEAC4C55156EAE6400C79F3F /* OMKPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKPinAnnotationView.h; sourceTree = "<group>"; };
+		BEAC4C56156EAE6400C79F3F /* OMKPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKPinAnnotationView.m; sourceTree = "<group>"; };
+		BEAC4C57156EAE6400C79F3F /* OMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKPointAnnotation.h; sourceTree = "<group>"; };
+		BEAC4C58156EAE6400C79F3F /* OMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKPointAnnotation.m; sourceTree = "<group>"; };
+		BEAC4C59156EAE6400C79F3F /* OMKPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKPolyline.h; sourceTree = "<group>"; };
+		BEAC4C5A156EAE6400C79F3F /* OMKPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKPolyline.m; sourceTree = "<group>"; };
+		BEAC4C5B156EAE6400C79F3F /* OMKPolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKPolylineView.h; sourceTree = "<group>"; };
+		BEAC4C5C156EAE6400C79F3F /* OMKPolylineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKPolylineView.m; sourceTree = "<group>"; };
+		BEAC4C5D156EAE6400C79F3F /* OMKScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKScrollView.h; sourceTree = "<group>"; };
+		BEAC4C5E156EAE6400C79F3F /* OMKScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKScrollView.m; sourceTree = "<group>"; };
+		BEAC4C5F156EAE6400C79F3F /* OMKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKShape.h; sourceTree = "<group>"; };
+		BEAC4C60156EAE6400C79F3F /* OMKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKShape.m; sourceTree = "<group>"; };
+		BEAC4C61156EAE6400C79F3F /* OMKTiledLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKTiledLayer.h; sourceTree = "<group>"; };
+		BEAC4C62156EAE6400C79F3F /* OMKTiledLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTiledLayer.m; sourceTree = "<group>"; };
+		BEAC4C65156EAE6400C79F3F /* OMKTileKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKTileKey.h; sourceTree = "<group>"; };
+		BEAC4C66156EAE6400C79F3F /* OMKTileKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTileKey.m; sourceTree = "<group>"; };
+		BEAC4C67156EAE6400C79F3F /* UIColor+OMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+OMKAdditions.h"; sourceTree = "<group>"; };
+		BEAC4C68156EAE6400C79F3F /* UIColor+OMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+OMKAdditions.m"; sourceTree = "<group>"; };
+		BEAC4C69156EAE6400C79F3F /* UIImage+OMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OMKAdditions.h"; sourceTree = "<group>"; };
+		BEAC4C6A156EAE6400C79F3F /* UIImage+OMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+OMKAdditions.m"; sourceTree = "<group>"; };
+		BEAC4CA5156EB20400C79F3F /* OfflineMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = OfflineMapKit.bundle; path = Resources/OfflineMapKit.bundle; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		664A269214E3265400C297E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E8B6D014D899500074EAA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E8B6D714D899500074EAA4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		664A269714E3265400C297E6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEAC4CA5156EB20400C79F3F /* OfflineMapKit.bundle */,
+			);
+			name = Resources;
+			path = OfflineMapKitResources;
+			sourceTree = "<group>";
+		};
+		66E8B6C814D899500074EAA4 = {
+			isa = PBXGroup;
+			children = (
+				66E8B6D814D899500074EAA4 /* OfflineMapKit */,
+				664A269714E3265400C297E6 /* Resources */,
+				66E8B6D514D899500074EAA4 /* Frameworks */,
+				66E8B6D414D899500074EAA4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		66E8B6D414D899500074EAA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66E8B6D314D899500074EAA4 /* libOfflineMapKit.a */,
+				664A269514E3265400C297E6 /* OfflineMapKit.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66E8B6D514D899500074EAA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66E8B6D614D899500074EAA4 /* Foundation.framework */,
+				664A268414E3222700C297E6 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66E8B6D814D899500074EAA4 /* OfflineMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				66E8B6DA14D899500074EAA4 /* OfflineMapKit-Prefix.pch */,
+				66E8B6DB14D899500074EAA4 /* OfflineMapKit.h */,
+				BEAC4C37156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h */,
+				BEAC4C38156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m */,
+				BEAC4C39156EAE6400C79F3F /* OfflineMapKit-Private.h */,
+				BEAC4C3A156EAE6400C79F3F /* OfflineMapKit.m */,
+				BEAC4C3B156EAE6400C79F3F /* OMKAnnotation.h */,
+				BEAC4C3C156EAE6400C79F3F /* OMKAnnotationContainerView.h */,
+				BEAC4C3D156EAE6400C79F3F /* OMKAnnotationContainerView.m */,
+				BEAC4C3E156EAE6400C79F3F /* OMKAnnotationView.h */,
+				BEAC4C3F156EAE6400C79F3F /* OMKAnnotationView.m */,
+				BEAC4C40156EAE6400C79F3F /* OMKBase.h */,
+				BEAC4C41156EAE6400C79F3F /* OMKBase.m */,
+				BEAC4C42156EAE6400C79F3F /* OMKCalloutView.h */,
+				BEAC4C43156EAE6400C79F3F /* OMKCalloutView.m */,
+				BEAC4C44156EAE6400C79F3F /* OMKMapTileProvider.h */,
+				BEAC4C45156EAE6400C79F3F /* OMKMapTileView.h */,
+				BEAC4C46156EAE6400C79F3F /* OMKMapTileView.m */,
+				BEAC4C47156EAE6400C79F3F /* OMKMapView.h */,
+				BEAC4C48156EAE6400C79F3F /* OMKMapView.m */,
+				BEAC4C49156EAE6400C79F3F /* OMKMapViewDelegate.h */,
+				BEAC4C4A156EAE6400C79F3F /* OMKMultiPoint.h */,
+				BEAC4C4B156EAE6400C79F3F /* OMKMultiPoint.m */,
+				BEAC4C4C156EAE6400C79F3F /* OMKOverlay.h */,
+				BEAC4C4D156EAE6400C79F3F /* OMKOverlayContainerView.h */,
+				BEAC4C4E156EAE6400C79F3F /* OMKOverlayContainerView.m */,
+				BEAC4C4F156EAE6400C79F3F /* OMKOverlayPathView.h */,
+				BEAC4C50156EAE6400C79F3F /* OMKOverlayPathView.m */,
+				BEAC4C51156EAE6400C79F3F /* OMKOverlayTileView.h */,
+				BEAC4C52156EAE6400C79F3F /* OMKOverlayTileView.m */,
+				BEAC4C53156EAE6400C79F3F /* OMKOverlayView.h */,
+				BEAC4C54156EAE6400C79F3F /* OMKOverlayView.m */,
+				BEAC4C55156EAE6400C79F3F /* OMKPinAnnotationView.h */,
+				BEAC4C56156EAE6400C79F3F /* OMKPinAnnotationView.m */,
+				BEAC4C57156EAE6400C79F3F /* OMKPointAnnotation.h */,
+				BEAC4C58156EAE6400C79F3F /* OMKPointAnnotation.m */,
+				BEAC4C59156EAE6400C79F3F /* OMKPolyline.h */,
+				BEAC4C5A156EAE6400C79F3F /* OMKPolyline.m */,
+				BEAC4C5B156EAE6400C79F3F /* OMKPolylineView.h */,
+				BEAC4C5C156EAE6400C79F3F /* OMKPolylineView.m */,
+				BEAC4C5D156EAE6400C79F3F /* OMKScrollView.h */,
+				BEAC4C5E156EAE6400C79F3F /* OMKScrollView.m */,
+				BEAC4C5F156EAE6400C79F3F /* OMKShape.h */,
+				BEAC4C60156EAE6400C79F3F /* OMKShape.m */,
+				BEAC4C61156EAE6400C79F3F /* OMKTiledLayer.h */,
+				BEAC4C62156EAE6400C79F3F /* OMKTiledLayer.m */,
+				BEAC4C65156EAE6400C79F3F /* OMKTileKey.h */,
+				BEAC4C66156EAE6400C79F3F /* OMKTileKey.m */,
+				BEAC4C67156EAE6400C79F3F /* UIColor+OMKAdditions.h */,
+				BEAC4C68156EAE6400C79F3F /* UIColor+OMKAdditions.m */,
+				BEAC4C69156EAE6400C79F3F /* UIImage+OMKAdditions.h */,
+				BEAC4C6A156EAE6400C79F3F /* UIImage+OMKAdditions.m */,
+				76437E89156EF0A300598CDB /* psimpl.hpp */,
+				76437E88156EEFAF00598CDB /* OMKCXX.h */,
+				76437E86156EEF8000598CDB /* OMKCXX.cpp */,
+			);
+			path = OfflineMapKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		66E8B6D114D899500074EAA4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E8B6E314D89CCE0074EAA4 /* OfflineMapKit.h in Headers */,
+				BEAC4C6F156EAE6400C79F3F /* OMKAnnotation.h in Headers */,
+				BEAC4C72156EAE6400C79F3F /* OMKAnnotationView.h in Headers */,
+				BEAC4C74156EAE6400C79F3F /* OMKBase.h in Headers */,
+				BEAC4C78156EAE6400C79F3F /* OMKMapTileProvider.h in Headers */,
+				BEAC4C7B156EAE6400C79F3F /* OMKMapView.h in Headers */,
+				BEAC4C7D156EAE6400C79F3F /* OMKMapViewDelegate.h in Headers */,
+				BEAC4C7E156EAE6400C79F3F /* OMKMultiPoint.h in Headers */,
+				BEAC4C80156EAE6400C79F3F /* OMKOverlay.h in Headers */,
+				BEAC4C83156EAE6400C79F3F /* OMKOverlayPathView.h in Headers */,
+				BEAC4C87156EAE6400C79F3F /* OMKOverlayView.h in Headers */,
+				BEAC4C89156EAE6400C79F3F /* OMKPinAnnotationView.h in Headers */,
+				BEAC4C8B156EAE6400C79F3F /* OMKPointAnnotation.h in Headers */,
+				BEAC4C8D156EAE6400C79F3F /* OMKPolyline.h in Headers */,
+				BEAC4C8F156EAE6400C79F3F /* OMKPolylineView.h in Headers */,
+				BEAC4C93156EAE6400C79F3F /* OMKShape.h in Headers */,
+				BEAC4C99156EAE6400C79F3F /* OMKTileKey.h in Headers */,
+				BEAC4C6B156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h in Headers */,
+				BEAC4C6D156EAE6400C79F3F /* OfflineMapKit-Private.h in Headers */,
+				BEAC4C70156EAE6400C79F3F /* OMKAnnotationContainerView.h in Headers */,
+				BEAC4C76156EAE6400C79F3F /* OMKCalloutView.h in Headers */,
+				BEAC4C79156EAE6400C79F3F /* OMKMapTileView.h in Headers */,
+				BEAC4C81156EAE6400C79F3F /* OMKOverlayContainerView.h in Headers */,
+				BEAC4C85156EAE6400C79F3F /* OMKOverlayTileView.h in Headers */,
+				BEAC4C91156EAE6400C79F3F /* OMKScrollView.h in Headers */,
+				BEAC4C95156EAE6400C79F3F /* OMKTiledLayer.h in Headers */,
+				BEAC4C9B156EAE6400C79F3F /* UIColor+OMKAdditions.h in Headers */,
+				BEAC4C9D156EAE6400C79F3F /* UIImage+OMKAdditions.h in Headers */,
+				76437E8A156EF0A300598CDB /* psimpl.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		664A269414E3265400C297E6 /* Resources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 664A269E14E3265400C297E6 /* Build configuration list for PBXNativeTarget "Resources" */;
+			buildPhases = (
+				664A269114E3265400C297E6 /* Sources */,
+				664A269214E3265400C297E6 /* Frameworks */,
+				664A269314E3265400C297E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resources;
+			productName = OfflineMapKitResources;
+			productReference = 664A269514E3265400C297E6 /* OfflineMapKit.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		66E8B6D214D899500074EAA4 /* OfflineMapKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E8B6E014D899500074EAA4 /* Build configuration list for PBXNativeTarget "OfflineMapKit" */;
+			buildPhases = (
+				66E8B6CF14D899500074EAA4 /* Sources */,
+				66E8B6D014D899500074EAA4 /* Frameworks */,
+				66E8B6D114D899500074EAA4 /* Headers */,
+				66E8B6E814D8A4D10074EAA4 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OfflineMapKit;
+			productName = OfflineMapKit;
+			productReference = 66E8B6D314D899500074EAA4 /* libOfflineMapKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66E8B6CA14D899500074EAA4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Stanislav Yaglo";
+			};
+			buildConfigurationList = 66E8B6CD14D899500074EAA4 /* Build configuration list for PBXProject "OfflineMapKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 66E8B6C814D899500074EAA4;
+			productRefGroup = 66E8B6D414D899500074EAA4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66E8B6D214D899500074EAA4 /* OfflineMapKit */,
+				664A269414E3265400C297E6 /* Resources */,
+				66F5F13314DB195B0068FD20 /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		664A269314E3265400C297E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEAC4CA6156EB20400C79F3F /* OfflineMapKit.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66E8B6E814D8A4D10074EAA4 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n\n# Link the \"Current\" version to \"${FRAMEWORK_VERSION}\"\nln -sfh ${FRAMEWORK_VERSION} \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\nln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\nln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\ncp -a \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n";
+		};
+		66F5F13A14DB19B20068FD20 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\n    exit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    SF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    SF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    SF_OTHER_PLATFORM=iphonesimulator\nelse\n    SF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\n    SF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		664A269114E3265400C297E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E8B6CF14D899500074EAA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEAC4C6C156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m in Sources */,
+				BEAC4C6E156EAE6400C79F3F /* OfflineMapKit.m in Sources */,
+				BEAC4C71156EAE6400C79F3F /* OMKAnnotationContainerView.m in Sources */,
+				BEAC4C73156EAE6400C79F3F /* OMKAnnotationView.m in Sources */,
+				BEAC4C75156EAE6400C79F3F /* OMKBase.m in Sources */,
+				BEAC4C77156EAE6400C79F3F /* OMKCalloutView.m in Sources */,
+				BEAC4C7A156EAE6400C79F3F /* OMKMapTileView.m in Sources */,
+				BEAC4C7C156EAE6400C79F3F /* OMKMapView.m in Sources */,
+				BEAC4C7F156EAE6400C79F3F /* OMKMultiPoint.m in Sources */,
+				BEAC4C82156EAE6400C79F3F /* OMKOverlayContainerView.m in Sources */,
+				BEAC4C84156EAE6400C79F3F /* OMKOverlayPathView.m in Sources */,
+				BEAC4C86156EAE6400C79F3F /* OMKOverlayTileView.m in Sources */,
+				BEAC4C88156EAE6400C79F3F /* OMKOverlayView.m in Sources */,
+				BEAC4C8A156EAE6400C79F3F /* OMKPinAnnotationView.m in Sources */,
+				BEAC4C8C156EAE6400C79F3F /* OMKPointAnnotation.m in Sources */,
+				BEAC4C8E156EAE6400C79F3F /* OMKPolyline.m in Sources */,
+				BEAC4C92156EAE6400C79F3F /* OMKScrollView.m in Sources */,
+				BEAC4C94156EAE6400C79F3F /* OMKShape.m in Sources */,
+				BEAC4C96156EAE6400C79F3F /* OMKTiledLayer.m in Sources */,
+				BEAC4C9A156EAE6400C79F3F /* OMKTileKey.m in Sources */,
+				BEAC4C9C156EAE6400C79F3F /* UIColor+OMKAdditions.m in Sources */,
+				BEAC4C9E156EAE6400C79F3F /* UIImage+OMKAdditions.m in Sources */,
+				76437E87156EEF8100598CDB /* OMKCXX.cpp in Sources */,
+				76437E8B156EFC4A00598CDB /* OMKPolylineView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		664A26AC14E330B700C297E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 664A269414E3265400C297E6 /* Resources */;
+			targetProxy = 664A26AB14E330B700C297E6 /* PBXContainerItemProxy */;
+		};
+		66F5F13914DB19940068FD20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E8B6D214D899500074EAA4 /* OfflineMapKit */;
+			targetProxy = 66F5F13814DB19940068FD20 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		664A269F14E3265400C297E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = OfflineMapKit;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		664A26A014E3265400C297E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = OfflineMapKit;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		66E8B6DE14D899500074EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		66E8B6DF14D899500074EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66E8B6E114D899500074EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/OfflineMapKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OfflineMapKit/OfflineMapKit-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		66E8B6E214D899500074EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/OfflineMapKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OfflineMapKit/OfflineMapKit-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Release;
+		};
+		66F5F13414DB195B0068FD20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		66F5F13514DB195B0068FD20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		664A269E14E3265400C297E6 /* Build configuration list for PBXNativeTarget "Resources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				664A269F14E3265400C297E6 /* Debug */,
+				664A26A014E3265400C297E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E8B6CD14D899500074EAA4 /* Build configuration list for PBXProject "OfflineMapKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E8B6DE14D899500074EAA4 /* Debug */,
+				66E8B6DF14D899500074EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E8B6E014D899500074EAA4 /* Build configuration list for PBXNativeTarget "OfflineMapKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E8B6E114D899500074EAA4 /* Debug */,
+				66E8B6E214D899500074EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66F5F13614DB195B0068FD20 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66F5F13414DB195B0068FD20 /* Debug */,
+				66F5F13514DB195B0068FD20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66E8B6CA14D899500074EAA4 /* Project object */;
+}

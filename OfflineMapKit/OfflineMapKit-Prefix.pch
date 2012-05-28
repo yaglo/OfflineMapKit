@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'OfflineMapKit' target in the 'OfflineMapKit' project
+//
+
+#ifdef __OBJC__
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#endif
