@@ -19,7 +19,7 @@
 - (void)mapViewDidFinishTrackingUserLocation:(OMKMapView *)mapView;
 - (void)mapViewDidFailTrackingUserLocation:(OMKMapView *)mapView withError:(NSError *)error;
 
-- (OMKAnnotationView *)xmapView:(OMKMapView *)mapView viewForAnnotation:(id <OMKAnnotation>)annotation;
-- (OMKOverlayView *)xmapView:(OMKMapView *)mapView viewForOverlay:(id<OMKOverlay>)overlay;
+- (OMKAnnotationView *)mapView:(OMKMapView *)mapView viewForAnnotation:(id <OMKAnnotation>)annotation;
+- (OMKOverlayView *)mapView:(OMKMapView *)mapView viewForOverlay:(id<OMKOverlay>)overlay;
 
 @end

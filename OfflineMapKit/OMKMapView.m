@@ -191,7 +191,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 - (void)addOverlay:(id <OMKOverlay>)overlay
 {
     if (_delegateRespondsToViewForOverlay) {
-        OMKOverlayView *view = [_delegate xmapView:self viewForOverlay:overlay];
+        OMKOverlayView *view = [_delegate mapView:self viewForOverlay:overlay];
         OMKMapRect r = [view.overlay boundingMapRect];
         view.frame = CGRectMake(r.origin.x, r.origin.y, r.size.width, r.size.height);
         view.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
@@ -210,8 +210,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 - (void)setDelegate:(id <OMKMapViewDelegate>)delegate
 {
     _delegate = delegate;
-    _delegateRespondsToViewForAnnotation = [delegate respondsToSelector:@selector(xmapView:viewForAnnotation:)];
-    _delegateRespondsToViewForOverlay = [delegate respondsToSelector:@selector(xmapView:viewForOverlay:)];
+    _delegateRespondsToViewForAnnotation = [delegate respondsToSelector:@selector(mapView:viewForAnnotation:)];
+    _delegateRespondsToViewForOverlay = [delegate respondsToSelector:@selector(mapView:viewForOverlay:)];
 }
 
 - (CGFloat)zoomLevel
@@ -445,7 +445,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 - (OMKAnnotationView *)viewForAnnotation:(id<OMKAnnotation>)annotation
 {
     if (_delegateRespondsToViewForAnnotation)
-        return [_delegate xmapView:self viewForAnnotation:annotation];
+        return [_delegate mapView:self viewForAnnotation:annotation];
 
     return nil;
 }
