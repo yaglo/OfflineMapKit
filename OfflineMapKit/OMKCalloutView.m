@@ -196,9 +196,9 @@
 
     CGFloat xOffsetDelta = 0;
     CGFloat yOffsetDelta = 0;
-    const CGFloat xNeededPadding = rintf(kCapWidth + kAnchorWidth / 2) + 2; // FIXME: understanding needed of why + 2
+    const CGFloat xNeededPadding = rintf(kCapWidth + kAnchorWidth / 2) + 1;
     const CGFloat topNeededPadding = kCalloutHeight;
-    const CGFloat bottomNeededPadding = CGRectGetMinY(mapView.scrollView.bounds) + 14; // FIXME: understanding needed of why + 14
+    const CGFloat bottomNeededPadding = CGRectGetMinY(mapView.scrollView.bounds) + 10;
 
     CGFloat leftPadding = self.center.x - mapView.scrollView.bounds.origin.x - [mapView topViewInsets].left;
     CGFloat rightPadding = mapView.scrollView.bounds.origin.x + mapView.scrollView.bounds.size.width - self.center.x - [mapView topViewInsets].right;

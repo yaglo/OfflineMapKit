@@ -61,7 +61,11 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         self.contentScaleFactor = 1;
 
 #if OMK_ROTATE_MAP_ON_HEADING_CHANGE
-        CGFloat diagonal = floor(sqrt(CGRectGetHeight(self.bounds) * CGRectGetHeight(self.bounds) + CGRectGetWidth(self.bounds) * CGRectGetWidth(self.bounds))) + 2;
+        CGFloat diagonal = sqrt(CGRectGetHeight(self.bounds) * CGRectGetHeight(self.bounds) + CGRectGetWidth(self.bounds) * CGRectGetWidth(self.bounds)) + 2;
+        if (floorf(diagonal) == diagonal) {
+            diagonal -= 2;
+        }
+        diagonal = floorf(diagonal);
         topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, diagonal, diagonal)];
         topView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
         topView.layer.anchorPoint = CGPointMake(.5, .5);
