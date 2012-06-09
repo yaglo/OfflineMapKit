@@ -8,6 +8,7 @@
 #import "OMKAnnotationContainerView.h"
 #import "OMKAnnotationView.h"
 #import "OMKCalloutView.h"
+#import "OMKPointAnnotation.h"
 
 #import "OfflineMapKit-Private.h"
 
@@ -178,6 +179,10 @@
 - (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation
 {
     OMKAnnotationView *view = [_mapView viewForAnnotation:annotation];
+
+    if (!view && [annotation isKindOfClass:[OMKPointAnnotation class]]) {
+        view = [[OMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+    }
 
     if (view) {
         [_annotationViews addObject:view];

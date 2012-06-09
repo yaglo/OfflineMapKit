@@ -31,6 +31,11 @@
     if (self) {
         _annotation = annotation;
         _reuseIdentifier = [reuseIdentifier copy];
+
+        NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString *trimmedTitle = [[_annotation title] stringByTrimmingCharactersInSet:whitespaceSet];
+        
+        self.canShowCallout = ([trimmedTitle length] != 0);
     }
     return self;
 }

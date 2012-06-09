@@ -117,6 +117,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         [self bringSubviewToFront:_openStreetMapAttributionView];
 
         _annotations = [NSMutableSet set];
+
+        [self zoomToLocationCoordinate:CLLocationCoordinate2DMake(OMKDefaultLatitude, OMKDefaultLongitude) zoomLevel:OMKDefaultZoomLevel animated:NO];
     }
     return self;
 }

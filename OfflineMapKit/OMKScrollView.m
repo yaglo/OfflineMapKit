@@ -21,6 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.autoresizesSubviews = NO;
         self.contentSize = CGSizeMake(OMKMapSizeWorld.width, OMKMapSizeWorld.height);
         self.contentMode = UIViewContentModeTopLeft;
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
