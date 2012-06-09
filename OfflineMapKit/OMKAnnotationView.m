@@ -35,6 +35,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_annotation removeObserver:self forKeyPath:@"coordinate"];
+}
+
 - (void)setAnnotation:(id<OMKAnnotation>)annotation
 {
     [(NSObject *)_annotation removeObserver:self forKeyPath:@"coordinate"];
