@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		768850AA1583F850005A08F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850A91583F850005A08F1 /* UIKit.framework */; };
+		768850AC1583F850005A08F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850AB1583F850005A08F1 /* Foundation.framework */; };
+		768850AE1583F850005A08F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850AD1583F850005A08F1 /* CoreGraphics.framework */; };
+		768850B41583F850005A08F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 768850B21583F850005A08F1 /* InfoPlist.strings */; };
+		768850B61583F850005A08F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850B51583F850005A08F1 /* main.m */; };
+		768850BA1583F850005A08F1 /* OMKTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850B91583F850005A08F1 /* OMKTAppDelegate.m */; };
+		768850C21583F9D6005A08F1 /* OMKTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850C11583F9D6005A08F1 /* OMKTViewController.m */; };
+		768850C41583F9ED005A08F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C31583F9ED005A08F1 /* MapKit.framework */; };
+		768850C61583F9F3005A08F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C51583F9F3005A08F1 /* CoreLocation.framework */; };
+		768850C81583FA0D005A08F1 /* OfflineMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C71583FA0D005A08F1 /* OfflineMapKit.framework */; };
+		768850CA1583FA80005A08F1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C91583FA80005A08F1 /* QuartzCore.framework */; };
+		768850D01583FEA2005A08F1 /* OfflineMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 768850CF1583FEA2005A08F1 /* OfflineMapKit.bundle */; };
+		768850D31584003F005A08F1 /* OMKTTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850D21584003F005A08F1 /* OMKTTileProvider.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		768850A51583F850005A08F1 /* OfflineMapKitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineMapKitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		768850A91583F850005A08F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		768850AB1583F850005A08F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		768850AD1583F850005A08F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		768850B11583F850005A08F1 /* OfflineMapKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OfflineMapKitTests-Info.plist"; sourceTree = "<group>"; };
+		768850B31583F850005A08F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		768850B51583F850005A08F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		768850B71583F850005A08F1 /* OfflineMapKitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OfflineMapKitTests-Prefix.pch"; sourceTree = "<group>"; };
+		768850B81583F850005A08F1 /* OMKTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMKTAppDelegate.h; sourceTree = "<group>"; };
+		768850B91583F850005A08F1 /* OMKTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMKTAppDelegate.m; sourceTree = "<group>"; };
+		768850C01583F9D6005A08F1 /* OMKTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKTViewController.h; sourceTree = "<group>"; };
+		768850C11583F9D6005A08F1 /* OMKTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTViewController.m; sourceTree = "<group>"; };
+		768850C31583F9ED005A08F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		768850C51583F9F3005A08F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		768850C71583FA0D005A08F1 /* OfflineMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OfflineMapKit.framework; path = "../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos/OfflineMapKit.framework"; sourceTree = "<group>"; };
+		768850C91583FA80005A08F1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		768850CF1583FEA2005A08F1 /* OfflineMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OfflineMapKit.bundle; sourceTree = "<group>"; };
+		768850D11584003F005A08F1 /* OMKTTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKTTileProvider.h; sourceTree = "<group>"; };
+		768850D21584003F005A08F1 /* OMKTTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTTileProvider.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		768850A21583F850005A08F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				768850CA1583FA80005A08F1 /* QuartzCore.framework in Frameworks */,
+				768850C61583F9F3005A08F1 /* CoreLocation.framework in Frameworks */,
+				768850C41583F9ED005A08F1 /* MapKit.framework in Frameworks */,
+				768850AA1583F850005A08F1 /* UIKit.framework in Frameworks */,
+				768850AC1583F850005A08F1 /* Foundation.framework in Frameworks */,
+				768850AE1583F850005A08F1 /* CoreGraphics.framework in Frameworks */,
+				768850C81583FA0D005A08F1 /* OfflineMapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7688509A1583F850005A08F1 = {
+			isa = PBXGroup;
+			children = (
+				768850AF1583F850005A08F1 /* OfflineMapKitTests */,
+				768850A81583F850005A08F1 /* Frameworks */,
+				768850A61583F850005A08F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		768850A61583F850005A08F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				768850A51583F850005A08F1 /* OfflineMapKitTests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		768850A81583F850005A08F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				768850C91583FA80005A08F1 /* QuartzCore.framework */,
+				768850C71583FA0D005A08F1 /* OfflineMapKit.framework */,
+				768850C51583F9F3005A08F1 /* CoreLocation.framework */,
+				768850C31583F9ED005A08F1 /* MapKit.framework */,
+				768850A91583F850005A08F1 /* UIKit.framework */,
+				768850AB1583F850005A08F1 /* Foundation.framework */,
+				768850AD1583F850005A08F1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		768850AF1583F850005A08F1 /* OfflineMapKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				768850B81583F850005A08F1 /* OMKTAppDelegate.h */,
+				768850B91583F850005A08F1 /* OMKTAppDelegate.m */,
+				768850B01583F850005A08F1 /* Supporting Files */,
+				768850C01583F9D6005A08F1 /* OMKTViewController.h */,
+				768850C11583F9D6005A08F1 /* OMKTViewController.m */,
+				768850D11584003F005A08F1 /* OMKTTileProvider.h */,
+				768850D21584003F005A08F1 /* OMKTTileProvider.m */,
+			);
+			path = OfflineMapKitTests;
+			sourceTree = "<group>";
+		};
+		768850B01583F850005A08F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				768850CF1583FEA2005A08F1 /* OfflineMapKit.bundle */,
+				768850B11583F850005A08F1 /* OfflineMapKitTests-Info.plist */,
+				768850B21583F850005A08F1 /* InfoPlist.strings */,
+				768850B51583F850005A08F1 /* main.m */,
+				768850B71583F850005A08F1 /* OfflineMapKitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		768850A41583F850005A08F1 /* OfflineMapKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 768850BD1583F850005A08F1 /* Build configuration list for PBXNativeTarget "OfflineMapKitTests" */;
+			buildPhases = (
+				768850A11583F850005A08F1 /* Sources */,
+				768850A21583F850005A08F1 /* Frameworks */,
+				768850A31583F850005A08F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OfflineMapKitTests;
+			productName = OfflineMapKitTests;
+			productReference = 768850A51583F850005A08F1 /* OfflineMapKitTests.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7688509C1583F850005A08F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OMKT;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 7688509F1583F850005A08F1 /* Build configuration list for PBXProject "OfflineMapKitTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7688509A1583F850005A08F1;
+			productRefGroup = 768850A61583F850005A08F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				768850A41583F850005A08F1 /* OfflineMapKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		768850A31583F850005A08F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				768850B41583F850005A08F1 /* InfoPlist.strings in Resources */,
+				768850D01583FEA2005A08F1 /* OfflineMapKit.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		768850A11583F850005A08F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				768850B61583F850005A08F1 /* main.m in Sources */,
+				768850BA1583F850005A08F1 /* OMKTAppDelegate.m in Sources */,
+				768850C21583F9D6005A08F1 /* OMKTViewController.m in Sources */,
+				768850D31584003F005A08F1 /* OMKTTileProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		768850B21583F850005A08F1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				768850B31583F850005A08F1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		768850BB1583F850005A08F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		768850BC1583F850005A08F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		768850BE1583F850005A08F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OfflineMapKitTests/OfflineMapKitTests-Prefix.pch";
+				INFOPLIST_FILE = "OfflineMapKitTests/OfflineMapKitTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		768850BF1583F850005A08F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OfflineMapKitTests/OfflineMapKitTests-Prefix.pch";
+				INFOPLIST_FILE = "OfflineMapKitTests/OfflineMapKitTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7688509F1583F850005A08F1 /* Build configuration list for PBXProject "OfflineMapKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				768850BB1583F850005A08F1 /* Debug */,
+				768850BC1583F850005A08F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		768850BD1583F850005A08F1 /* Build configuration list for PBXNativeTarget "OfflineMapKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				768850BE1583F850005A08F1 /* Debug */,
+				768850BF1583F850005A08F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7688509C1583F850005A08F1 /* Project object */;
+}
