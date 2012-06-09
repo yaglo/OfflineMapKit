@@ -38,6 +38,7 @@
 @property (nonatomic, assign) OMKUserTrackingMode userTrackingMode;
 
 @property (nonatomic) BOOL showsOpenStreetMapAttribution;
+@property (nonatomic) BOOL showsUserLocation;
 
 - (void)setNeedsDisplayTileWithKey:(OMKTileKey *)tileKey;
 

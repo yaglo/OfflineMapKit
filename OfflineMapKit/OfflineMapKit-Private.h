@@ -16,7 +16,7 @@
 extern const NSUInteger OMKMaxZoomLevel;
 extern const NSUInteger OMKMinZoomLevel;
 
-#define OMK_ROTATE_MAP_ON_HEADING_CHANGE 0
+#define OMK_ROTATE_MAP_ON_HEADING_CHANGE 1
 
 #define OMKDefaultZoomLevel 5
 #define OMKDefaultLatitude 37.160317

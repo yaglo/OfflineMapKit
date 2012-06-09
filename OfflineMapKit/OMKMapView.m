@@ -43,6 +43,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 @synthesize delegate = _delegate;
 @synthesize tileProvider = _tileProvider;
+@synthesize showsUserLocation;
 @synthesize userTrackingMode = _userTrackingMode;
 
 - (void)dealloc
@@ -64,7 +65,6 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, diagonal, diagonal)];
         topView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
         topView.layer.anchorPoint = CGPointMake(.5, .5);
-        topView.backgroundColor = [UIColor redColor];
         [self addSubview:topView];
 #else
         topView = [[UIView alloc] initWithFrame:self.bounds];
@@ -99,9 +99,6 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
         _mapTileView->_overlayTileView = _overlayTileView;
         [_mapTileView addSubview:_overlayContainerView];
-
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
 
         _userTrackingMode = OMKUserTrackingModeInactive;
 
@@ -148,6 +145,23 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 - (void)layoutSubviews
 {
     _scrollView.frame = topView.bounds;
+}
+
+#pragma mark - User Location
+
+- (void)setShowsUserLocation:(BOOL)ifShowsUserLocation
+{
+    showsUserLocation = ifShowsUserLocation;
+
+    if (showsUserLocation) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+    }
+    else {
+        [_locationManager stopUpdatingLocation];
+        [_locationManager stopUpdatingHeading];
+        _locationManager = nil;
+    }
 }
 
 #pragma mark - Annotations
