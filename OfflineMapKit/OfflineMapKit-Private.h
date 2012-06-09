@@ -29,6 +29,7 @@ extern const NSUInteger OMKMinZoomLevel;
 @interface OMKMapView (Private)
 - (CGFloat)lowerZoomLevel:(CGFloat)zoomLevel;
 - (CGFloat)higherZoomLevel:(CGFloat)zoomLevel;
+- (UIEdgeInsets)topViewInsets;
 
 @property (readonly) OMKScrollView *scrollView;
 

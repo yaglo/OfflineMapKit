@@ -458,6 +458,14 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     return _scrollView;
 }
 
+- (UIEdgeInsets)topViewInsets
+{
+    return UIEdgeInsetsMake(CGRectGetMinY(topView.frame) - CGRectGetMinY(self.bounds),
+                            CGRectGetMinX(topView.frame) - CGRectGetMinX(self.bounds),
+                            CGRectGetMaxY(topView.frame) - CGRectGetMaxY(self.bounds),
+                            CGRectGetMaxX(topView.frame) - CGRectGetMaxX(self.bounds));
+}
+
 - (OMKAnnotationView *)viewForAnnotation:(id<OMKAnnotation>)annotation
 {
     if (_delegateRespondsToViewForAnnotation)
