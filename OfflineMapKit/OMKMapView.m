@@ -239,19 +239,58 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     return OMKMinZoomLevel + OMKMaxZoomLevel + log2f(_scrollView.zoomScale);
 }
 
+- (CLLocationCoordinate2D)centerCoordinate
+{
+    CGPoint center = CGPointMake(CGRectGetMidX(_scrollView.bounds), CGRectGetMidY(_scrollView.bounds));
+    return CLLocationCoordinate2DMake(__OMKLatitudeForY(center.y, _scrollView.contentSize.height),
+                                      __OMKLongitudeForX(center.x, _scrollView.contentSize.width));
+}
+
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
+{
+    [self setCenterCoordinate:centerCoordinate animated:NO];
+}
+
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate animated:(BOOL)animated
+{
+    [self zoomToLocationCoordinate:centerCoordinate zoomLevel:-1 animated:animated animateDistance:NO];
+}
+
+- (void)setVisibleMapRect:(OMKMapRect)mapRect animated:(BOOL)animate
+{
+    OMKMapRect realMapRect = OMKMapRectMake(MAX(OMKMapRectWorld.origin.x, mapRect.origin.x),
+                                            MAX(OMKMapRectWorld.origin.y, mapRect.origin.y),
+                                            MIN(OMKMapRectWorld.size.height, mapRect.size.height),
+                                            MIN(OMKMapRectWorld.size.width, mapRect.size.width));
+
+    if (_scrollView.minimumZoomScale * OMKMapRectGetHeight(realMapRect) > CGRectGetHeight(self.bounds)) {
+        realMapRect.size.height = CGRectGetHeight(self.bounds) / _scrollView.minimumZoomScale;
+    }
+
+    if (_scrollView.minimumZoomScale * OMKMapRectGetWidth(realMapRect) > CGRectGetWidth(self.bounds)) {
+        realMapRect.size.width = CGRectGetWidth(self.bounds) / _scrollView.minimumZoomScale;
+    }
+
+    // TODO: complete the implementation
+}
+
 - (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated
 {
-    if (zoomLevel < OMKMinZoomLevel)
-        zoomLevel = -1;
-    else
-        zoomLevel = MIN(zoomLevel, OMKMaxZoomLevel);
+    [self zoomToLocationCoordinate:coordinate zoomLevel:zoomLevel animated:YES animateDistance:YES];
+}
 
+- (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated animateDistance:(BOOL)animateDistance
+{
     CGFloat zoomScale;
 
-    if (zoomLevel == -1)
+    if (zoomLevel < OMKMinZoomLevel) {
+        zoomLevel = -1;
         zoomScale = _scrollView.zoomScale;
-    else
+    }
+    else {
+        zoomLevel = MIN(zoomLevel, OMKMaxZoomLevel);
         zoomScale = 1. / powf(2, OMKMinZoomLevel + OMKMaxZoomLevel - zoomLevel);
+    }
 
     OMKMapPoint targetMapPoint = OMKMapPointForCoordinate(coordinate);
 
@@ -274,15 +313,13 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
             CGFloat distance = sqrtf(powf(pointToScroll.x - visibleMapCenterPoint.x, 2) + powf(pointToScroll.y - visibleMapCenterPoint.y, 2));
 
             // Если точка далеко, сначала удаляемся, потом приближаем
-            if (distance > 1000)
+            if (animateDistance && distance > 1000)
             {
-                CLLocationCoordinate2D coordinate =  CLLocationCoordinate2DMake(__OMKLatitudeForY(visibleMapCenterPoint.y, _scrollView.contentSize.height),
-                                                                                __OMKLongitudeForX(visibleMapCenterPoint.x, _scrollView.contentSize.width));
-
-                [self zoomToLocationCoordinate:coordinate zoomLevel:log2f(zoomScale) - 4 animated:YES];
+                CLLocationCoordinate2D centerCoordinate = self.centerCoordinate;
+                [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) - 4 animated:YES];
 
                 [self omk_performBlock:^{
-                    [self zoomToLocationCoordinate:coordinate zoomLevel:log2f(zoomScale) animated:YES];
+                    [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) animated:YES];
                 } afterDelay:0.5];
             }
             else {

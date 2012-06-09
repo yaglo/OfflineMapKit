@@ -42,4 +42,9 @@
 
 - (void)setNeedsDisplayTileWithKey:(OMKTileKey *)tileKey;
 
+@property(nonatomic) CLLocationCoordinate2D centerCoordinate;
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate animated:(BOOL)animated;
+
+- (void)setVisibleMapRect:(OMKMapRect)mapRect animated:(BOOL)animate;
+
 @end

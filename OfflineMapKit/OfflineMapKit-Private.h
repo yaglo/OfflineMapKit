@@ -13,8 +13,8 @@
 #import "OMKScrollView.h"
 #import "OMKTiledLayer.h"
 
-extern const NSUInteger OMKMaxZoomLevel;
-extern const NSUInteger OMKMinZoomLevel;
+extern const NSInteger OMKMaxZoomLevel;
+extern const NSInteger OMKMinZoomLevel;
 
 #define OMK_ROTATE_MAP_ON_HEADING_CHANGE 1
 

@@ -8,8 +8,8 @@
 #import "OfflineMapKit.h"
 #import "OfflineMapKit-Private.h"
 
-const NSUInteger OMKMaxZoomLevel = 19;
-const NSUInteger OMKMinZoomLevel = 3;
+const NSInteger OMKMaxZoomLevel = 20;
+const NSInteger OMKMinZoomLevel = 2;
 
 // http://stackoverflow.com/a/100165/261460
 
