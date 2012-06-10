@@ -28,7 +28,7 @@
 
 + (UIColor *)omk_zoomingTileBackgroundColor
 {
-    return OMKColorFromRGB(0xbfc0b9);
+    return OMKColorFromRGB(0xc1bfbb);
 }
 
 @end
