@@ -11,6 +11,7 @@
 
 @implementation OMKMapTileView
 {
+    CGSize _tileSize;
     NSCache *_tileCache;
 }
 
@@ -45,17 +46,21 @@
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
 {
+    if (CGSizeEqualToSize(_tileSize, CGSizeZero)) {
+        _tileSize = self.tileSize;
+    }
+
     CGRect rect = CGContextGetClipBoundingBox(context);
     CGFloat scale = CGContextGetCTM(context).a;
     CGContextSetInterpolationQuality(context, kCGInterpolationNone);
     UIImage *image = nil;
-    
-    OMKTileKey *tileKey = [OMKTileKey tileKeyForX:(CGRectGetMinX(rect) * scale) / 256
-                                                Y:(CGRectGetMinY(rect) * scale) / 256
-                                        zoomLevel:28 - (int)log2f(rect.size.width)];
-    
+
     id<OMKMapTileProvider> tileProvider = _mapView.tileProvider;
-    
+
+    OMKTileKey *tileKey = [OMKTileKey tileKeyForX:(CGRectGetMinX(rect) * scale) / _tileSize.width
+                                                Y:(CGRectGetMinY(rect) * scale) / _tileSize.height
+                                        zoomLevel:28 - (int)log2f(rect.size.width)];
+
     CGImageRef img = (__bridge CGImageRef)[_tileCache objectForKey:tileKey];
     
     if (img) {
@@ -89,13 +94,27 @@
             CGContextFillRect(context, rect);
         }
     }
-//
-//    [_overlayTileView drawLayer:_overlayTileView.layer inContext:context];
 }
 
 - (void)drawRect:(CGRect)rect
 {
+}
 
+#pragma mark - Tile Size
+
+- (void)setTileSize:(CGSize)tileSize
+{
+    _tileSize = tileSize;
+    OMKTiledLayer *layer = (id)self.layer;
+    layer.tileSize = _tileSize;
+}
+
+- (CGSize)tileSize
+{
+    if (CGSizeEqualToSize(_tileSize, CGSizeZero)) {
+        _tileSize = [_mapView tileSize];
+    }
+    return _tileSize;
 }
 
 @end

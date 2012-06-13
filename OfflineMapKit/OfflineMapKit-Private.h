@@ -15,6 +15,7 @@
 
 extern const NSInteger OMKMaxZoomLevel;
 extern const NSInteger OMKMinZoomLevel;
+extern const CGSize OMKDefaultTileSize;
 
 #define OMK_ROTATE_MAP_ON_HEADING_CHANGE 1
 
@@ -30,6 +31,7 @@ extern const NSInteger OMKMinZoomLevel;
 - (CGFloat)lowerZoomLevel:(CGFloat)zoomLevel;
 - (CGFloat)higherZoomLevel:(CGFloat)zoomLevel;
 - (UIEdgeInsets)topViewInsets;
+- (CGSize)tileSize;
 
 @property (readonly) OMKScrollView *scrollView;
 

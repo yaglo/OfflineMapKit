@@ -15,5 +15,6 @@
 }
 
 @property (nonatomic, assign) OMKMapView *mapView;
+@property (nonatomic, assign) CGSize tileSize;
 
 @end

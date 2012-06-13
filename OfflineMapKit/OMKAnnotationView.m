@@ -29,12 +29,11 @@
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        _annotation = annotation;
+        self.annotation = annotation;
         _reuseIdentifier = [reuseIdentifier copy];
 
         NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
         NSString *trimmedTitle = [[_annotation title] stringByTrimmingCharactersInSet:whitespaceSet];
-        
         self.canShowCallout = ([trimmedTitle length] != 0);
     }
     return self;
@@ -42,12 +41,17 @@
 
 - (void)dealloc
 {
-    [(NSObject *)_annotation removeObserver:self forKeyPath:@"coordinate"];
+    if (_annotation) {
+        [(NSObject *)_annotation removeObserver:self forKeyPath:@"coordinate"];
+    }
 }
 
 - (void)setAnnotation:(id<OMKAnnotation>)annotation
 {
-    [(NSObject *)_annotation removeObserver:self forKeyPath:@"coordinate"];
+    if (_annotation) {
+        [(NSObject *)_annotation removeObserver:self forKeyPath:@"coordinate"];
+    }
+
     _annotation = annotation;
     [(NSObject *)_annotation addObserver:self forKeyPath:@"coordinate" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
 }

@@ -10,6 +10,9 @@
 #import "OMKTiledLayer.h"
 
 @implementation OMKOverlayTileView
+{
+    CGSize _tileSize;
+}
 
 #pragma mark - Properties
 
@@ -58,6 +61,23 @@
             }
         }
     }
+}
+
+#pragma mark - Tile Size
+
+- (void)setTileSize:(CGSize)tileSize
+{
+    _tileSize = tileSize;
+    OMKTiledLayer *layer = (id)self.layer;
+    layer.tileSize = _tileSize;
+}
+
+- (CGSize)tileSize
+{
+    if (CGSizeEqualToSize(_tileSize, CGSizeZero)) {
+        _tileSize = [_mapView tileSize];
+    }
+    return _tileSize;
 }
 
 @end

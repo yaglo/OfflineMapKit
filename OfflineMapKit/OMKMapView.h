@@ -28,23 +28,29 @@
 
 - (OMKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
 
-@property (readonly) CGFloat zoomLevel;
 
 @property (nonatomic, assign) id<NSObject, OMKMapViewDelegate> delegate;
-@property (nonatomic, strong) id<OMKMapTileProvider> tileProvider;
-
-- (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated;
 
 @property (nonatomic, assign) OMKUserTrackingMode userTrackingMode;
 
-@property (nonatomic) BOOL showsOpenStreetMapAttribution;
 @property (nonatomic) BOOL showsUserLocation;
-
-- (void)setNeedsDisplayTileWithKey:(OMKTileKey *)tileKey;
 
 @property(nonatomic) CLLocationCoordinate2D centerCoordinate;
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate animated:(BOOL)animated;
 
 - (void)setVisibleMapRect:(OMKMapRect)mapRect animated:(BOOL)animate;
+
+
+
+@property (nonatomic) BOOL showsOpenStreetMapAttribution;
+@property (nonatomic, strong) id<OMKMapTileProvider> tileProvider;
+@property (readonly) CGFloat zoomLevel;
+@property (readonly) CGSize tileSize;
+
+- (id)initWithMapTileProvider:(id<OMKMapTileProvider>)tileProvider;
+
+- (void)setNeedsDisplayTileWithKey:(OMKTileKey *)tileKey;
+
+- (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated;
 
 @end

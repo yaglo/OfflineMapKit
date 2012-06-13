@@ -17,7 +17,7 @@
         self.levelsOfDetail = 20;
         self.levelsOfDetailBias = 0;
         self.opaque = YES;
-        self.tileSize = CGSizeMake(256, 256);
+        self.tileSize = OMKDefaultTileSize;
     }
     return self;
 }

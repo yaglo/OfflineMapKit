@@ -9,7 +9,8 @@
 
 @interface OMKOverlayTileView : UIView
 
-@property (nonatomic, strong) NSMutableArray *overlayViews;
 @property (nonatomic, assign) OMKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *overlayViews;
+@property (nonatomic, assign) CGSize tileSize;
 
 @end

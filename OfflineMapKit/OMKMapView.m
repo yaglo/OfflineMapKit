@@ -82,6 +82,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
         _mapTileView = [[OMKMapTileView alloc] initWithFrame:CGRectMake(0, 0, OMKMapSizeWorld.width, OMKMapSizeWorld.height)];
         _mapTileView.mapView = self;
+        _mapTileView.tileSize = self.tileSize;
         [_scrollView addSubview:_mapTileView];
 
         _annotationContainerView = [[OMKAnnotationContainerView alloc] initWithFrame:CGRectMake(0, 0, 512, 512)];
@@ -99,6 +100,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         
         _overlayTileView = [[OMKOverlayTileView alloc] initWithFrame:_mapTileView.bounds];
         _overlayTileView.mapView = self;
+        _overlayTileView.tileSize = self.tileSize;
         [_overlayContainerView addSubview:_overlayTileView];
 
         _mapTileView->_overlayTileView = _overlayTileView;
@@ -360,6 +362,27 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     else {
         [_scrollView zoomToRect:targetZoomRect animated:NO];
     }
+}
+
+- (void)setTileProvider:(id<OMKMapTileProvider>)tileProvider
+{
+    _tileProvider = tileProvider;
+    [self updateTileSize];
+}
+
+- (void)updateTileSize
+{
+    _mapTileView.tileSize = _overlayTileView.tileSize = self.tileSize;
+}
+
+- (CGSize)tileSize
+{
+    if ([_tileProvider respondsToSelector:@selector(tileSizeForMapView:)]) {
+        CGSize tileSize = [_tileProvider tileSizeForMapView:self];
+        NSAssert(!CGSizeEqualToSize(tileSize, CGSizeZero), @"Tile size must not be zero");
+        return tileSize;
+    }
+    return OMKDefaultTileSize;
 }
 
 - (void)setUserTrackingMode:(OMKUserTrackingMode)userTrackingMode

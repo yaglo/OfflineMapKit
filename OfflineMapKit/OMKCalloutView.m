@@ -198,12 +198,12 @@
     CGFloat yOffsetDelta = 0;
     const CGFloat xNeededPadding = rintf(kCapWidth + kAnchorWidth / 2) + 1;
     const CGFloat topNeededPadding = kCalloutHeight;
-    const CGFloat bottomNeededPadding = CGRectGetMinY(mapView.scrollView.bounds) + 10;
+//    const CGFloat bottomNeededPadding = CGRectGetMinY(mapView.scrollView.bounds) + 10;
 
     CGFloat leftPadding = self.center.x - mapView.scrollView.bounds.origin.x - [mapView topViewInsets].left;
     CGFloat rightPadding = mapView.scrollView.bounds.origin.x + mapView.scrollView.bounds.size.width - self.center.x - [mapView topViewInsets].right;
     CGFloat topPadding = self.center.y - mapView.scrollView.bounds.origin.y - [mapView topViewInsets].top;
-    CGFloat bottomPadding = self.center.y - mapView.scrollView.bounds.origin.y - [mapView topViewInsets].top;
+//    CGFloat bottomPadding = self.center.y - mapView.scrollView.bounds.origin.y - [mapView topViewInsets].top;
 
     if (leftPadding < xNeededPadding) {
         xOffsetDelta = leftPadding - xNeededPadding;
@@ -215,10 +215,10 @@
     if (topPadding < topNeededPadding) {
         yOffsetDelta = topPadding - topNeededPadding;
     }
-
-    if (bottomPadding < bottomNeededPadding) {
-        yOffsetDelta = bottomNeededPadding - bottomPadding;
-    }
+//
+//    if (bottomPadding < bottomNeededPadding) {
+//        yOffsetDelta = bottomNeededPadding - bottomPadding;
+//    }
 
     [UIView animateWithDuration:0.175 animations:^{
         mapView.scrollView.bounds = CGRectMake(mapView.scrollView.bounds.origin.x + xOffsetDelta, mapView.scrollView.bounds.origin.y + yOffsetDelta, mapView.scrollView.bounds.size.width, mapView.scrollView.bounds.size.height);
