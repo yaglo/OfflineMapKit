@@ -132,7 +132,7 @@
     CGFloat textWidth = MAX(titleWidth, subtitleWidth);
 
     CGFloat totalWidth = 0;
-    CGFloat mapViewWidth = mapView.scrollView.bounds.size.width;
+    CGFloat mapViewWidth = mapView.scrollView.bounds.size.width - mapView.topViewInsets.left - mapView.topViewInsets.right;
 
     CGFloat textPositionLeft = kCapWidth;
 

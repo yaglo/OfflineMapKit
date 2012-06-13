@@ -458,6 +458,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)aScrollView withView:(UIView *)view atScale:(float)scale
 {
+    NSLog(@"%f", scale);
     _scrollView.backgroundColor = [UIColor omk_loadingTileBackgroundColor];
     [_annotationContainerView setNeedsLayout];
 }

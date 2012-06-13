@@ -25,8 +25,9 @@
         self.contentSize = CGSizeMake(OMKMapSizeWorld.width, OMKMapSizeWorld.height);
         self.contentMode = UIViewContentModeTopLeft;
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
-        self.minimumZoomScale = 1. / powf(2, OMKMaxZoomLevel);
+        self.minimumZoomScale = 1. / powf(2, OMKMaxZoomLevel - 1);
         self.maximumZoomScale = 1. / powf(2, OMKMinZoomLevel);
+        NSLog(@"%f %f", self.minimumZoomScale, self.maximumZoomScale);
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.bouncesZoom = NO;
         self.bounces = NO;
