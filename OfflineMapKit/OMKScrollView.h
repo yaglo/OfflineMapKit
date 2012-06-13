@@ -11,6 +11,6 @@
 
 @interface OMKScrollView : UIScrollView
 
-@property (nonatomic, unsafe_unretained) OMKMapView *mapView;
+- (id)initWithFrame:(CGRect)frame mapView:(OMKMapView *)mapView;
 
 @end

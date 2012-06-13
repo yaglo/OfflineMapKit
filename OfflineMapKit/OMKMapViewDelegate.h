@@ -22,4 +22,7 @@
 - (OMKAnnotationView *)mapView:(OMKMapView *)mapView viewForAnnotation:(id <OMKAnnotation>)annotation;
 - (OMKOverlayView *)mapView:(OMKMapView *)mapView viewForOverlay:(id<OMKOverlay>)overlay;
 
+- (OMKZoomLevel)minimumZoomLevelForMapView:(OMKMapView *)mapView;
+- (OMKZoomLevel)maximumZoomLevelForMapView:(OMKMapView *)mapView;
+
 @end

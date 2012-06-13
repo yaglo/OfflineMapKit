@@ -31,7 +31,10 @@ extern const CGSize OMKDefaultTileSize;
 - (CGFloat)lowerZoomLevel:(CGFloat)zoomLevel;
 - (CGFloat)higherZoomLevel:(CGFloat)zoomLevel;
 - (UIEdgeInsets)topViewInsets;
+
 - (CGSize)tileSize;
+- (OMKZoomLevel)maximumZoomLevel;
+- (OMKZoomLevel)minimumZoomLevel;
 
 @property (readonly) OMKScrollView *scrollView;
 

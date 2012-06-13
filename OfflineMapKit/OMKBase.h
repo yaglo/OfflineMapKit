@@ -33,6 +33,7 @@ typedef enum {
     OMKUserTrackingModeTrackingHeading,
 } OMKUserTrackingMode;
 
+typedef NSInteger OMKZoomLevel;
 typedef CGFloat OMKZoomScale;
 
 extern const OMKMapSize OMKMapSizeWorld;

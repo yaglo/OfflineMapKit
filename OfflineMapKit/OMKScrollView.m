@@ -12,21 +12,23 @@
 #import "UIColor+OMKAdditions.h"
 
 @implementation OMKScrollView
+{
+    __unsafe_unretained OMKMapView *mapView;
+}
 
 #pragma mark - Properties
 
-@synthesize mapView;
-
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame mapView:(OMKMapView *)theMapView
 {
     self = [super initWithFrame:frame];
     if (self) {
+        mapView = theMapView;
         self.autoresizesSubviews = NO;
         self.contentSize = CGSizeMake(OMKMapSizeWorld.width, OMKMapSizeWorld.height);
         self.contentMode = UIViewContentModeTopLeft;
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
-        self.minimumZoomScale = 1. / powf(2, OMKMaxZoomLevel - 1);
-        self.maximumZoomScale = 1. / powf(2, OMKMinZoomLevel);
+        self.minimumZoomScale = 1. / powf(2, [mapView maximumZoomLevel] - 1);
+        self.maximumZoomScale = 1. / powf(2, [mapView minimumZoomLevel]);
         NSLog(@"%f %f", self.minimumZoomScale, self.maximumZoomScale);
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.bouncesZoom = NO;
@@ -63,7 +65,7 @@
 
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(__OMKLatitudeForY(targetMapPoint.y, self.contentSize.height),
                                                                    __OMKLongitudeForX(targetMapPoint.x, self.contentSize.width));
-    [self.mapView zoomToLocationCoordinate:coordinate zoomLevel:[self.mapView higherZoomLevel:self.mapView.zoomLevel] animated:YES];
+    [mapView zoomToLocationCoordinate:coordinate zoomLevel:[mapView higherZoomLevel:mapView.zoomLevel] animated:YES];
 }
 
 - (void)handleSingleDoubleTouch:(UITapGestureRecognizer *)tapGR
@@ -72,7 +74,7 @@
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(__OMKLatitudeForY(visibleMapCenterPoint.y, self.contentSize.height),
                                                                    __OMKLongitudeForX(visibleMapCenterPoint.x, self.contentSize.width));
 
-    [self.mapView zoomToLocationCoordinate:coordinate zoomLevel:[self.mapView lowerZoomLevel:self.mapView.zoomLevel] animated:YES];
+    [mapView zoomToLocationCoordinate:coordinate zoomLevel:[mapView lowerZoomLevel:mapView.zoomLevel] animated:YES];
 }
 
 @end

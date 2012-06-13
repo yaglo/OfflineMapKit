@@ -107,6 +107,7 @@
     _tileSize = tileSize;
     OMKTiledLayer *layer = (id)self.layer;
     layer.tileSize = _tileSize;
+    layer.levelsOfDetail = [_mapView maximumZoomLevel] + [_mapView minimumZoomLevel] + 1;
 }
 
 - (CGSize)tileSize
