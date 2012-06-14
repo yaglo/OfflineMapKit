@@ -59,8 +59,8 @@
 
         for (OMKOverlayView *view in _overlayViews) {
             if ([view canDrawMapRect:mapRect zoomScale:zoomScale]) {
-                CGContextSetFillColorWithColor(context, [[UIColor blueColor] colorWithAlphaComponent:.05].CGColor);
-                CGContextFillRect(context, rect);
+//                CGContextSetFillColorWithColor(context, [[UIColor blueColor] colorWithAlphaComponent:.05].CGColor);
+//                CGContextFillRect(context, rect);
                 [view drawMapRect:mapRect zoomScale:zoomScale inContext:context];
             }
         }
