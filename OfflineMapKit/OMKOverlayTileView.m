@@ -26,6 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.layer.opaque = NO;
+        self.contentScaleFactor = 1;
         _overlayViews = [[NSMutableArray alloc] init];
     }
     return self;
@@ -47,7 +48,10 @@
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
 {
-    @synchronized(self){
+    if ([_overlayViews count] == 0)
+        return;
+
+    @synchronized(self) {
         CGRect rect = CGContextGetClipBoundingBox(context);
         CGFloat zoomScale = CGContextGetCTM(context).a;
 
@@ -55,8 +59,8 @@
 
         for (OMKOverlayView *view in _overlayViews) {
             if ([view canDrawMapRect:mapRect zoomScale:zoomScale]) {
-//                CGContextSetFillColorWithColor(context, [[UIColor blueColor] colorWithAlphaComponent:.05].CGColor);
-//                CGContextFillRect(context, rect);
+                CGContextSetFillColorWithColor(context, [[UIColor blueColor] colorWithAlphaComponent:.05].CGColor);
+                CGContextFillRect(context, rect);
                 [view drawMapRect:mapRect zoomScale:zoomScale inContext:context];
             }
         }

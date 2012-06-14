@@ -90,7 +90,7 @@ void simplifyDP( float tol, OMKMapPoint *v, int j, int k, int *mk )
     NSUInteger pointCount = self.pointCount;
     int markers[pointCount];
 
-    float tolerance = 2 / zoomScale;
+    float tolerance = 1 / zoomScale;
     simplifyDP(tolerance, points, 0, pointCount - 1, markers);
 
     int newPointCount = 0;

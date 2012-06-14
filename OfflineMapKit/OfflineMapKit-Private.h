@@ -17,7 +17,7 @@ extern const NSInteger OMKMaxZoomLevel;
 extern const NSInteger OMKMinZoomLevel;
 extern const CGSize OMKDefaultTileSize;
 
-#define OMK_ROTATE_MAP_ON_HEADING_CHANGE 1
+#define OMK_ROTATE_MAP_ON_HEADING_CHANGE 0
 
 #define OMKDefaultZoomLevel 5
 #define OMKDefaultLatitude 37.160317

@@ -39,6 +39,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
     BOOL _delegateRespondsToViewForAnnotation;
     BOOL _delegateRespondsToViewForOverlay;
+
+    NSInteger minimumZoomLevel, maximumZoomLevel;
 }
 
 @synthesize delegate = _delegate;
@@ -59,6 +61,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     if (self) {
         self.clipsToBounds = YES;
         self.contentScaleFactor = 1;
+        minimumZoomLevel = maximumZoomLevel = 0;
 
 #if OMK_ROTATE_MAP_ON_HEADING_CHANGE
         CGFloat diagonal = sqrt(CGRectGetHeight(self.bounds) * CGRectGetHeight(self.bounds) + CGRectGetWidth(self.bounds) * CGRectGetWidth(self.bounds)) + 2;
@@ -84,7 +87,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         _mapTileView.tileSize = self.tileSize;
         [_scrollView addSubview:_mapTileView];
 
-        _annotationContainerView = [[OMKAnnotationContainerView alloc] initWithFrame:CGRectMake(0, 0, 512, 512)];
+        _annotationContainerView = [[OMKAnnotationContainerView alloc] initWithFrame:CGRectMake(0, 0, 256, 256)];
         _annotationContainerView->_mapView = self;
 
         UITapGestureRecognizer *singleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -98,6 +101,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         _overlayContainerView = [[OMKOverlayContainerView alloc] initWithFrame:_mapTileView.bounds];
         
         _overlayTileView = [[OMKOverlayTileView alloc] initWithFrame:_mapTileView.bounds];
+
         _overlayTileView.mapView = self;
         _overlayTileView.tileSize = self.tileSize;
         [_overlayContainerView addSubview:_overlayTileView];
@@ -233,11 +237,24 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     _delegate = delegate;
     _delegateRespondsToViewForAnnotation = [delegate respondsToSelector:@selector(mapView:viewForAnnotation:)];
     _delegateRespondsToViewForOverlay = [delegate respondsToSelector:@selector(mapView:viewForOverlay:)];
+    minimumZoomLevel = maximumZoomLevel = 0;
+    [_scrollView updateZoomScales];
+    [self zoomToLocationCoordinate:CLLocationCoordinate2DMake(OMKDefaultLatitude, OMKDefaultLongitude) zoomLevel:OMKDefaultZoomLevel animated:NO];
+}
+
+- (CGFloat)zoomScaleForZoomLevel:(OMKZoomLevel)zoomLevel
+{
+    return powf(2, zoomLevel - OMKMaxZoomLevel);
+}
+
+- (CGFloat)zoomLevelForZoomScale:(OMKZoomScale)zoomScale
+{
+    return log2f(_scrollView.zoomScale) + OMKMaxZoomLevel;
 }
 
 - (CGFloat)zoomLevel
 {
-    return [self minimumZoomLevel] + [self maximumZoomLevel] + log2f(_scrollView.zoomScale);
+    return [self zoomLevelForZoomScale:_scrollView.zoomScale];
 }
 
 - (CLLocationCoordinate2D)centerCoordinate
@@ -277,7 +294,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated
 {
-    [self zoomToLocationCoordinate:coordinate zoomLevel:zoomLevel animated:YES animateDistance:YES];
+    [self zoomToLocationCoordinate:coordinate zoomLevel:zoomLevel animated:animated animateDistance:YES];
 }
 
 - (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated animateDistance:(BOOL)animateDistance
@@ -290,7 +307,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     }
     else {
         zoomLevel = MIN(zoomLevel, [self maximumZoomLevel]);
-        zoomScale = 1. / powf(2, [self minimumZoomLevel] + [self maximumZoomLevel] - zoomLevel);
+        zoomScale = [self zoomScaleForZoomLevel:zoomLevel];
     }
 
     OMKMapPoint targetMapPoint = OMKMapPointForCoordinate(coordinate);
@@ -386,22 +403,28 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (OMKZoomLevel)maximumZoomLevel
 {
-    OMKZoomLevel zoomLevel = OMKMaxZoomLevel;
+    if (maximumZoomLevel != 0)
+        return maximumZoomLevel;
+
+    maximumZoomLevel = OMKMaxZoomLevel;
 
     if ([_delegate respondsToSelector:@selector(maximumZoomLevelForMapView:)]) {
-        zoomLevel = [_delegate maximumZoomLevelForMapView:self];
+        maximumZoomLevel = [_delegate maximumZoomLevelForMapView:self];
     }
-    return zoomLevel;
+    return maximumZoomLevel;
 }
 
 - (OMKZoomLevel)minimumZoomLevel
 {
-    OMKZoomLevel zoomLevel = OMKMinZoomLevel;
+    if (minimumZoomLevel != 0)
+        return minimumZoomLevel;
+
+    minimumZoomLevel = OMKMinZoomLevel;
     
     if ([_delegate respondsToSelector:@selector(minimumZoomLevelForMapView:)]) {
-        zoomLevel = [_delegate minimumZoomLevelForMapView:self];
+        minimumZoomLevel = [_delegate minimumZoomLevelForMapView:self];
     }
-    return zoomLevel;
+    return minimumZoomLevel;
 }
 
 - (void)setUserTrackingMode:(OMKUserTrackingMode)userTrackingMode
@@ -477,7 +500,6 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)aScrollView withView:(UIView *)view atScale:(float)scale
 {
-    NSLog(@"%f", scale);
     _scrollView.backgroundColor = [UIColor omk_loadingTileBackgroundColor];
     [_annotationContainerView setNeedsLayout];
 }

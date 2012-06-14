@@ -12,5 +12,6 @@
 @interface OMKScrollView : UIScrollView
 
 - (id)initWithFrame:(CGRect)frame mapView:(OMKMapView *)mapView;
+- (void)updateZoomScales;
 
 @end

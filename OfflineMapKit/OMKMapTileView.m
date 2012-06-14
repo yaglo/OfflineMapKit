@@ -59,7 +59,7 @@
 
     OMKTileKey *tileKey = [OMKTileKey tileKeyForX:(CGRectGetMinX(rect) * scale) / _tileSize.width
                                                 Y:(CGRectGetMinY(rect) * scale) / _tileSize.height
-                                        zoomLevel:28 - (int)log2f(rect.size.width)];
+                                        zoomLevel:OMKMaxZoomLevel + 8 - (int)log2f(rect.size.width)];
 
     CGImageRef img = (__bridge CGImageRef)[_tileCache objectForKey:tileKey];
     
@@ -107,7 +107,6 @@
     _tileSize = tileSize;
     OMKTiledLayer *layer = (id)self.layer;
     layer.tileSize = _tileSize;
-    layer.levelsOfDetail = [_mapView maximumZoomLevel] + [_mapView minimumZoomLevel] + 1;
 }
 
 - (CGSize)tileSize

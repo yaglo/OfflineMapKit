@@ -23,13 +23,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         mapView = theMapView;
+        [self updateZoomScales];
         self.autoresizesSubviews = NO;
         self.contentSize = CGSizeMake(OMKMapSizeWorld.width, OMKMapSizeWorld.height);
         self.contentMode = UIViewContentModeTopLeft;
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
-        self.minimumZoomScale = 1. / powf(2, [mapView maximumZoomLevel] - 1);
-        self.maximumZoomScale = 1. / powf(2, [mapView minimumZoomLevel]);
-        NSLog(@"%f %f", self.minimumZoomScale, self.maximumZoomScale);
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.bouncesZoom = NO;
         self.bounces = NO;
@@ -53,6 +51,12 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)updateZoomScales
+{
+    self.minimumZoomScale = 1. / powf(2, OMKMaxZoomLevel - [mapView minimumZoomLevel]);
+    self.maximumZoomScale = 1. / powf(2, OMKMaxZoomLevel - [mapView maximumZoomLevel]);
+}
 
 - (void)handleSingleDoubleTap:(UITapGestureRecognizer *)tapGR
 {
