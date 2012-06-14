@@ -28,6 +28,8 @@
         self.opaque = YES;
         self.layer.opaque = YES;
         self.contentScaleFactor = 1;
+
+        _tileCache = [[NSCache alloc] init];
     }
     return self;
 }
@@ -44,25 +46,45 @@
     return [OMKTiledLayer class];
 }
 
-- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
+- (CGImageRef)fetchTileForRect:(CGRect)rect scale:(CGFloat)scale
 {
     if (CGSizeEqualToSize(_tileSize, CGSizeZero)) {
         _tileSize = self.tileSize;
     }
 
-    CGRect rect = CGContextGetClipBoundingBox(context);
-    CGFloat scale = CGContextGetCTM(context).a;
-    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
     UIImage *image = nil;
-
     id<OMKMapTileProvider> tileProvider = _mapView.tileProvider;
-
     OMKTileKey *tileKey = [OMKTileKey tileKeyForX:(CGRectGetMinX(rect) * scale) / _tileSize.width
                                                 Y:(CGRectGetMinY(rect) * scale) / _tileSize.height
                                         zoomLevel:OMKMaxZoomLevel + 8 - (int)log2f(rect.size.width)];
 
     CGImageRef img = (__bridge CGImageRef)[_tileCache objectForKey:tileKey];
-    
+
+    if (img) {
+        return img;
+    }
+    else {
+        if (tileProvider) {
+            image = [tileProvider mapView:_mapView imageForTileWithKey:tileKey];
+        }
+
+        if (image) {
+            [_tileCache setObject:(__bridge id)image.CGImage forKey:tileKey];
+            return image.CGImage;
+        }
+    }
+    return nil;
+}
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
+{
+    CGRect rect = CGContextGetClipBoundingBox(context);
+    CGFloat scale = CGContextGetCTM(context).a;
+
+    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
+
+    CGImageRef img = [self fetchTileForRect:rect scale:scale];
+
     if (img) {
         CALayer *l = [[CALayer alloc] init];
         l.contents = (__bridge id)img;
@@ -74,25 +96,8 @@
         CGContextRestoreGState(context);
     }
     else {
-        if (tileProvider) {
-            image = [tileProvider mapView:_mapView imageForTileWithKey:tileKey];
-            [_tileCache setObject:(__bridge id)image.CGImage forKey:tileKey];
-        }
-
-        if (image) {
-            CALayer *l = [[CALayer alloc] init];
-            l.contents = (__bridge id)image.CGImage;
-            l.frame = rect;
-            
-            CGContextSaveGState(context);
-            CGContextTranslateCTM(context, rect.origin.x, rect.origin.y);
-            [l renderInContext:context];
-            CGContextRestoreGState(context);
-        }
-        else {
-            CGContextSetFillColorWithColor(context, [UIColor omk_failedTileColor].CGColor);
-            CGContextFillRect(context, rect);
-        }
+        CGContextSetFillColorWithColor(context, [UIColor omk_failedTileColor].CGColor);
+        CGContextFillRect(context, rect);
     }
 }
 

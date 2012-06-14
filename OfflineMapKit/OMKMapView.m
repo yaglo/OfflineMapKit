@@ -44,6 +44,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 }
 
 @synthesize delegate = _delegate;
+@synthesize fetchesTilesAroundVisibleArea;
 @synthesize tileProvider = _tileProvider;
 @synthesize showsUserLocation;
 @synthesize userTrackingMode = _userTrackingMode;
@@ -62,6 +63,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         self.clipsToBounds = YES;
         self.contentScaleFactor = 1;
         minimumZoomLevel = maximumZoomLevel = 0;
+        fetchesTilesAroundVisibleArea = YES;
 
 #if OMK_ROTATE_MAP_ON_HEADING_CHANGE
         CGFloat diagonal = sqrt(CGRectGetHeight(self.bounds) * CGRectGetHeight(self.bounds) + CGRectGetWidth(self.bounds) * CGRectGetWidth(self.bounds)) + 2;
@@ -131,11 +133,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (id)initWithMapTileProvider:(id<OMKMapTileProvider>)tileProvider
 {
-    self = [self initWithFrame:CGRectZero];
-    if (self) {
-        _tileProvider = tileProvider;
-    }
-    return self;
+    _tileProvider = tileProvider;
+    return [self initWithFrame:CGRectZero];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
@@ -238,6 +237,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     _delegateRespondsToViewForAnnotation = [delegate respondsToSelector:@selector(mapView:viewForAnnotation:)];
     _delegateRespondsToViewForOverlay = [delegate respondsToSelector:@selector(mapView:viewForOverlay:)];
     minimumZoomLevel = maximumZoomLevel = 0;
+    [self updateTileSize];
     [_scrollView updateZoomScales];
     [self zoomToLocationCoordinate:CLLocationCoordinate2DMake(OMKDefaultLatitude, OMKDefaultLongitude) zoomLevel:OMKDefaultZoomLevel animated:NO];
 }
@@ -384,6 +384,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 {
     _tileProvider = tileProvider;
     [self updateTileSize];
+    [_scrollView updateZoomScales];
 }
 
 - (void)updateTileSize
@@ -497,6 +498,61 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         self.userTrackingMode = OMKUserTrackingModeInactive;
     }
 }
+
+- (void)fetchTop
+{
+    CGRect r = _scrollView.bounds;
+    CGFloat zs = _scrollView.zoomScale;
+
+    NSInteger firstTileX = CGRectGetMinX(r) / zs;
+    NSInteger firstTileY = (CGRectGetMinY(r) - CGRectGetHeight(r)) / zs;
+    NSInteger lastTileX = CGRectGetMaxX(r) / zs;
+    NSInteger lastTileY = CGRectGetMinY(r) / zs;
+
+    CGFloat tileSize = 256. / zs;
+    CGFloat scale = zs / 2;
+    
+    for (int x = firstTileX; x < lastTileX; x += tileSize) {
+        for (int y = firstTileY; y < lastTileY; y += tileSize) {
+            CGRect rect = CGRectMake(x, y, tileSize, tileSize);
+            [_mapTileView fetchTileForRect:rect scale:scale];
+        }
+    }
+}
+
+- (void)fetchBottom
+{
+    CGRect r = _scrollView.bounds;
+    CGFloat zs = _scrollView.zoomScale;
+    
+    NSInteger firstTileX = CGRectGetMinX(r) / zs;
+    NSInteger firstTileY = CGRectGetMaxY(r) / zs;
+    NSInteger lastTileX = CGRectGetMaxX(r) / zs;
+    NSInteger lastTileY = (CGRectGetMaxY(r) + CGRectGetHeight(r)) / zs;
+    
+    CGFloat tileSize = 256. / zs;
+    CGFloat scale = zs / 2;
+
+    for (int x = firstTileX; x < lastTileX; x += tileSize) {
+        for (int y = firstTileY; y < lastTileY; y += tileSize) {
+            CGRect rect = CGRectMake(x, y, tileSize, tileSize);
+            [_mapTileView fetchTileForRect:rect scale:scale];
+        }
+    }
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    if (!fetchesTilesAroundVisibleArea || scrollView.decelerating)
+//        return;
+//
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        [self fetchTop];
+//        [self fetchBottom];
+////        [self fetchLeft];
+////        [self fetchRight];
+//    });
+//}
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)aScrollView withView:(UIView *)view atScale:(float)scale
 {

@@ -46,6 +46,7 @@
 @property (nonatomic, strong) id<OMKMapTileProvider> tileProvider;
 @property (readonly) CGFloat zoomLevel;
 @property (readonly) CGSize tileSize;
+@property BOOL fetchesTilesAroundVisibleArea;
 
 - (id)initWithMapTileProvider:(id<OMKMapTileProvider>)tileProvider;
 

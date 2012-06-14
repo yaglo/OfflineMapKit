@@ -17,4 +17,6 @@
 @property (nonatomic, assign) OMKMapView *mapView;
 @property (nonatomic, assign) CGSize tileSize;
 
+- (CGImageRef)fetchTileForRect:(CGRect)rect scale:(CGFloat)scale;
+
 @end
