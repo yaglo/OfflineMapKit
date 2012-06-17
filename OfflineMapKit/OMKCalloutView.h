@@ -13,4 +13,9 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) UIControl *rightCalloutAccessoryView;
 
+- (void)getAnchorPoint:(CGPoint *)anchorPoint
+                 frame:(CGRect *)frame
+  forTargetAnchorPoint:(CGPoint *)targetAnchorPoint
+                bounds:(CGRect *)bounds;
+
 @end

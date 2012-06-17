@@ -11,6 +11,7 @@
 #import <OfflineMapKit/OMKBase.h>
 #import <OfflineMapKit/OMKAnnotation.h>
 #import <OfflineMapKit/OMKAnnotationView.h>
+#import <OfflineMapKit/OMKCalloutView.h>
 
 @class OMKMapView;
 
@@ -18,6 +19,7 @@
 {
 @package
     __unsafe_unretained OMKMapView *_mapView;
+    __strong OMKCalloutView *_calloutView;
 }
 
 - (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation;

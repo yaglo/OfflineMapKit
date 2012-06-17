@@ -13,6 +13,8 @@
 @protocol OMKMapTileProvider <NSObject>
 
 - (UIImage *)mapView:(OMKMapView *)mapView imageForTileWithKey:(OMKTileKey *)tileKey;
+
+@optional
 - (CGSize)tileSizeForMapView:(OMKMapView *)mapView;
 
 @end

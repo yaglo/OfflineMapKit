@@ -9,7 +9,7 @@
 #import "OfflineMapKit-Private.h"
 
 const NSInteger OMKMaxZoomLevel = 20;
-const NSInteger OMKMinZoomLevel = 2;
+const NSInteger OMKMinZoomLevel = 1;
 const CGSize OMKDefaultTileSize = { 256, 256 };
 
 // http://stackoverflow.com/a/100165/261460

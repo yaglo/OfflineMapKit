@@ -91,13 +91,6 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
         _annotationContainerView = [[OMKAnnotationContainerView alloc] initWithFrame:CGRectMake(0, 0, 256, 256)];
         _annotationContainerView->_mapView = self;
-
-        UITapGestureRecognizer *singleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        singleTapGR.numberOfTapsRequired = 1;
-        singleTapGR.delaysTouchesEnded = YES;
-        singleTapGR.delaysTouchesBegan = YES;
-        [_annotationContainerView addGestureRecognizer:singleTapGR];
-
         [_scrollView addSubview:_annotationContainerView];
 
         _overlayContainerView = [[OMKOverlayContainerView alloc] initWithFrame:_mapTileView.bounds];
@@ -121,8 +114,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
             _openStreetMapAttributionView.image.size.height);
 
         _openStreetMapAttributionView.hidden = NO;
-        [self addSubview:_openStreetMapAttributionView];
-        [self bringSubviewToFront:_openStreetMapAttributionView];
+        [topView addSubview:_openStreetMapAttributionView];
+        [topView bringSubviewToFront:_openStreetMapAttributionView];
 
         _annotations = [NSMutableSet set];
 
@@ -643,12 +636,9 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     }
 }
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)tapGR
+- (void)deselectActiveAnnotationView
 {
-//    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    if (tapGR.state == UIGestureRecognizerStateRecognized) {
-        [_annotationContainerView deselectActiveAnnotationView];
-    }
+    [_annotationContainerView deselectActiveAnnotationView];
 }
 
 - (CGFloat)lowerZoomLevel:(CGFloat)zoomLevel

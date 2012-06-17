@@ -16,7 +16,7 @@
 @protocol OMKMapTileProvider;
 @protocol OMKMapViewDelegate;
 
-@interface OMKMapView : UIView <CLLocationManagerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate>
+@interface OMKMapView : UIView <CLLocationManagerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, readonly) NSArray *annotations;
 - (void)addAnnotation:(id <OMKAnnotation>)annotation;

@@ -16,10 +16,10 @@
 		768850C21583F9D6005A08F1 /* OMKTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850C11583F9D6005A08F1 /* OMKTViewController.m */; };
 		768850C41583F9ED005A08F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C31583F9ED005A08F1 /* MapKit.framework */; };
 		768850C61583F9F3005A08F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C51583F9F3005A08F1 /* CoreLocation.framework */; };
-		768850C81583FA0D005A08F1 /* OfflineMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C71583FA0D005A08F1 /* OfflineMapKit.framework */; };
 		768850CA1583FA80005A08F1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768850C91583FA80005A08F1 /* QuartzCore.framework */; };
 		768850D01583FEA2005A08F1 /* OfflineMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 768850CF1583FEA2005A08F1 /* OfflineMapKit.bundle */; };
 		768850D31584003F005A08F1 /* OMKTTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 768850D21584003F005A08F1 /* OMKTTileProvider.m */; };
+		76F68ACC158E83AE004A6560 /* OfflineMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F68ACB158E83AE004A6560 /* OfflineMapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +37,11 @@
 		768850C11583F9D6005A08F1 /* OMKTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTViewController.m; sourceTree = "<group>"; };
 		768850C31583F9ED005A08F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		768850C51583F9F3005A08F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		768850C71583FA0D005A08F1 /* OfflineMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OfflineMapKit.framework; path = "../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos/OfflineMapKit.framework"; sourceTree = "<group>"; };
 		768850C91583FA80005A08F1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		768850CF1583FEA2005A08F1 /* OfflineMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OfflineMapKit.bundle; sourceTree = "<group>"; };
 		768850D11584003F005A08F1 /* OMKTTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMKTTileProvider.h; sourceTree = "<group>"; };
 		768850D21584003F005A08F1 /* OMKTTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMKTTileProvider.m; sourceTree = "<group>"; };
+		76F68ACB158E83AE004A6560 /* OfflineMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OfflineMapKit.framework; path = "../DerivedData/OfflineMapKit/Build/Products/Release-iphoneos/OfflineMapKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 				768850AA1583F850005A08F1 /* UIKit.framework in Frameworks */,
 				768850AC1583F850005A08F1 /* Foundation.framework in Frameworks */,
 				768850AE1583F850005A08F1 /* CoreGraphics.framework in Frameworks */,
-				768850C81583FA0D005A08F1 /* OfflineMapKit.framework in Frameworks */,
+				76F68ACC158E83AE004A6560 /* OfflineMapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +82,8 @@
 		768850A81583F850005A08F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76F68ACB158E83AE004A6560 /* OfflineMapKit.framework */,
 				768850C91583FA80005A08F1 /* QuartzCore.framework */,
-				768850C71583FA0D005A08F1 /* OfflineMapKit.framework */,
 				768850C51583F9F3005A08F1 /* CoreLocation.framework */,
 				768850C31583F9ED005A08F1 /* MapKit.framework */,
 				768850A91583F850005A08F1 /* UIKit.framework */,
@@ -223,6 +223,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../OfflineMapKit";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 			};
@@ -241,6 +242,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../OfflineMapKit";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -254,6 +256,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+					"\"$(SRCROOT)/../DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+					"\"$(SRCROOT)/../DerivedData/OfflineMapKit/Build/Products/Release-iphonesimulator\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OfflineMapKitTests/OfflineMapKitTests-Prefix.pch";
@@ -270,6 +274,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../OfflineMapKit/DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+					"\"$(SRCROOT)/../DerivedData/OfflineMapKit/Build/Products/Release-iphoneos\"",
+					"\"$(SRCROOT)/../DerivedData/OfflineMapKit/Build/Products/Release-iphonesimulator\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OfflineMapKitTests/OfflineMapKitTests-Prefix.pch";
@@ -299,6 +305,7 @@
 				768850BF1583F850005A08F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

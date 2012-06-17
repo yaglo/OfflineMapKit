@@ -12,7 +12,6 @@
 @implementation OMKAnnotationView
 {
     __strong UIImageView *_imageView;
-    __strong UIView *_touchableView;
 }
 
 @synthesize annotation = _annotation;
@@ -23,13 +22,13 @@
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize rightView;
 @synthesize rightCalloutAccessoryView = _rightCalloutAccessoryView;
-@synthesize touchArea = _touchArea;
 
 - (id)initWithAnnotation:(id<OMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.annotation = annotation;
+        self.multipleTouchEnabled = YES;
         _reuseIdentifier = [reuseIdentifier copy];
 
         NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -96,7 +95,8 @@
         _imageView.userInteractionEnabled = YES;
         [self addSubview:_imageView];
     }
-    [self setNeedsLayout];
+
+    self.bounds = CGRectMake(0, 0, _image.size.width, _image.size.height);
 }
 
 - (void)calloutAccessoryControlTapped:(UIControl *)calloutAccessoryControl
@@ -105,53 +105,41 @@
     [container->_mapView annotationView:self calloutAccessoryTapped:calloutAccessoryControl];
 }
 
-- (void)setTouchArea:(CGRect)touchArea
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (CGRectEqualToRect(_touchArea, touchArea))
-        return;
-
-    _touchArea = touchArea;
-    [self setNeedsLayout];
+    UITouch *touch = [touches anyObject];
+    if (touch.tapCount == 2) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    }
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UIView *hitView = [super hitTest:point withEvent:event];
+    UITouch *touch = [touches anyObject];
+    if (touch.tapCount == 1) {
+        [self performSelector:@selector(handleSingleTap) withObject:nil afterDelay:0.4];
+    }
+}
 
-    if (hitView != _touchableView)
-        return nil;
+- (void)handleSingleTap
+{
+    OMKAnnotationContainerView *container = (id)self.superview;
+    [container selectAnnotationView:self];
+}
 
-    return hitView;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+    return CGRectContainsPoint(_imageView.frame, point);
 }
 
 - (void)layoutSubviews
 {
     _imageView.frame = self.bounds;
-
-    if (CGRectEqualToRect(_touchArea, CGRectZero)) {
-        _touchArea = _imageView.bounds;
-    }
-
-    _touchableView.frame = _touchArea;
-
-    if (!_touchableView) {
-        _touchableView = [[UIView alloc] initWithFrame:_touchArea];
-        _imageView.userInteractionEnabled = YES;
-        _touchableView.userInteractionEnabled = YES;
-        [_imageView addSubview:_touchableView];
-
-        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouchableViewTap:)];
-        gestureRecognizer.numberOfTapsRequired = 1;
-        gestureRecognizer.numberOfTouchesRequired = 1;
-        [_touchableView addGestureRecognizer:gestureRecognizer];
-    }
-}
-
-- (void)handleTouchableViewTap:(UITapGestureRecognizer *)gestureRecognizer
-{
-//    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    OMKAnnotationContainerView *container = (id)self.superview;
-    [container selectAnnotationView:self];
 }
 
 @end

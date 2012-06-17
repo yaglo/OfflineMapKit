@@ -18,7 +18,6 @@
 {
     __strong OMKAnnotationView *_activeAnnotationView;
     __strong NSMutableArray *_annotationViews;
-    __strong OMKCalloutView *_calloutView;
     
     __strong NSMutableDictionary *_reusableAnnotationViews;
 

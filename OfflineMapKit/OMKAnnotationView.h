@@ -16,7 +16,6 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) CGPoint centerOffset;
 @property (nonatomic) CGPoint calloutOffset;
-@property (nonatomic) CGRect touchArea;
 
 @property (nonatomic) BOOL canShowCallout;
 

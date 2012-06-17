@@ -36,6 +36,7 @@
         self.showsHorizontalScrollIndicator = NO;
         self.scrollsToTop = NO;
         self.opaque = YES;
+        self.multipleTouchEnabled = YES;
 
         UITapGestureRecognizer *singleDoubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleDoubleTap:)];
         singleDoubleTapGR.numberOfTapsRequired = 2;
@@ -45,7 +46,6 @@
         singleDoubleTouchGR.numberOfTapsRequired = 1;
         singleDoubleTouchGR.numberOfTouchesRequired = 2;
         [self addGestureRecognizer:singleDoubleTouchGR];
-
     }
     return self;
 }
@@ -79,6 +79,28 @@
                                                                    __OMKLongitudeForX(visibleMapCenterPoint.x, self.contentSize.width));
 
     [mapView zoomToLocationCoordinate:coordinate zoomLevel:[mapView lowerZoomLevel:mapView.zoomLevel] animated:YES];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    if (touch.tapCount == 1) {
+        [self performSelector:@selector(handleSingleTap) withObject:nil afterDelay:0.4];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (void)handleSingleTap
+{
+    [mapView deselectActiveAnnotationView];
 }
 
 @end

@@ -118,6 +118,14 @@
     return ((OMKAnnotationContainerView *)self.superview)->_mapView;
 }
 
+- (void)getAnchorPoint:(CGPoint *)anchorPoint
+                 frame:(CGRect *)frame
+  forTargetAnchorPoint:(CGPoint *)targetAnchorPoint
+                bounds:(CGRect *)bounds
+{
+    // TODO
+}
+
 - (void)resize
 {
 //    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

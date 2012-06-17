@@ -19,7 +19,7 @@ extern const CGSize OMKDefaultTileSize;
 
 #define OMK_ROTATE_MAP_ON_HEADING_CHANGE 0
 
-#define OMKDefaultZoomLevel 5
+#define OMKDefaultZoomLevel 2
 #define OMKDefaultLatitude 37.160317
 #define OMKDefaultLongitude -95.976562
 #define OMKScrollingDuration 0.7
@@ -40,6 +40,7 @@ extern const CGSize OMKDefaultTileSize;
 
 - (void)annotationView:(OMKAnnotationView *)view calloutAccessoryTapped:(UIControl *)calloutAccessoryControl;
 - (OMKAnnotationView *)viewForAnnotation:(id <OMKAnnotation>)annotation;
+- (void)deselectActiveAnnotationView;
 
 @end
 

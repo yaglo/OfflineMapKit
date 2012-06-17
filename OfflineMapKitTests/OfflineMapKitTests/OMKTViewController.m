@@ -29,13 +29,13 @@
 - (void)setUp
 {
     tileProvider = [[OMKTTileProvider alloc] init];
-    omkmapView = [[OMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 240)];
+    omkmapView = [[OMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     omkmapView.delegate = self;
     omkmapView.tileProvider = tileProvider;
 //    omkmapView.showsUserLocation = YES;
     [self.view addSubview:omkmapView];
 
-    mkmapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 240, 320, 240)];
+//    mkmapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 240, 320, 240)];
     mkmapView.delegate = self;
 //    mkmapView.showsUserLocation = YES;
     [self.view addSubview:mkmapView];
@@ -46,7 +46,7 @@
     __block OMKPointAnnotation *omkAnnotation = [[OMKPointAnnotation alloc] init];
     omkAnnotation.title = @"Hello";
     omkAnnotation.subtitle = @"World";
-    omkAnnotation.coordinate = CLLocationCoordinate2DMake(0, 0);
+    omkAnnotation.coordinate = CLLocationCoordinate2DMake(37.160317, -95.976562);
 //    [omkmapView zoomToLocationCoordinate:CLLocationCoordinate2DMake(0, 0) zoomLevel:3 animated:NO];
     [omkmapView addAnnotation:omkAnnotation];
 
@@ -57,6 +57,7 @@
     [mkmapView addAnnotation:mkAnnotation];
 //    [mkmapView setVisibleMapRect:MKMapRectWorld animated:YES];
 
+    /*
     double delayInSeconds = .5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -113,12 +114,29 @@
                 });
             });
         });
-    });
+    });*/
 }
 
 - (id)mapView:(id)mapView viewForAnnotation:(id)annotation
 {
-    return nil;
+    if ([mapView isKindOfClass:[MKMapView class]]) return nil;
+
+    OMKPinAnnotationView *annotationView = (id)[(OMKMapView *)mapView dequeueReusableAnnotationViewWithIdentifier:@"POI"];
+    if (!annotationView) {
+        annotationView = [[OMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"POI"];
+    }
+//    annotationView.image = [UIImage imageNamed:@"OfflineMapKit.bundle/CalloutLeftCap.png"];
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    button.frame = CGRectMake(0, 0, 29, 31);
+    [annotationView performSelector:@selector(setRightCalloutAccessoryView:) withObject:button];
+
+    return annotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [[[UIAlertView alloc] initWithTitle:@"Hello" message:@"World" delegate:nil cancelButtonTitle:@"Hi!" otherButtonTitles:nil] show];
 }
 
 @end
