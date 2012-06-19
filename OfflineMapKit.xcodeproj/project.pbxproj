@@ -25,6 +25,8 @@
 /* Begin PBXBuildFile section */
 		66E8B6D714D899500074EAA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E8B6D614D899500074EAA4 /* Foundation.framework */; };
 		66E8B6E314D89CCE0074EAA4 /* OfflineMapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8B6DB14D899500074EAA4 /* OfflineMapKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7605E9A015909983007F171A /* SYCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7605E99E15909983007F171A /* SYCalloutView.h */; };
+		7605E9A115909983007F171A /* SYCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605E99F15909983007F171A /* SYCalloutView.m */; };
 		76437E8B156EFC4A00598CDB /* OMKPolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C5C156EAE6400C79F3F /* OMKPolylineView.m */; };
 		BEAC4C6B156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = BEAC4C37156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h */; };
 		BEAC4C6C156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC4C38156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m */; };
@@ -102,6 +104,8 @@
 		66E8B6D614D899500074EAA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66E8B6DA14D899500074EAA4 /* OfflineMapKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OfflineMapKit-Prefix.pch"; sourceTree = "<group>"; };
 		66E8B6DB14D899500074EAA4 /* OfflineMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineMapKit.h; sourceTree = "<group>"; };
+		7605E99E15909983007F171A /* SYCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCalloutView.h; sourceTree = "<group>"; };
+		7605E99F15909983007F171A /* SYCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCalloutView.m; sourceTree = "<group>"; };
 		BEAC4C37156EAE6400C79F3F /* NSObject+OMKDelayedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OMKDelayedBlock.h"; sourceTree = "<group>"; };
 		BEAC4C38156EAE6400C79F3F /* NSObject+OMKDelayedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+OMKDelayedBlock.m"; sourceTree = "<group>"; };
 		BEAC4C39156EAE6400C79F3F /* OfflineMapKit-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineMapKit-Private.h"; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				BEAC4C41156EAE6400C79F3F /* OMKBase.m */,
 				BEAC4C42156EAE6400C79F3F /* OMKCalloutView.h */,
 				BEAC4C43156EAE6400C79F3F /* OMKCalloutView.m */,
+				7605E99E15909983007F171A /* SYCalloutView.h */,
+				7605E99F15909983007F171A /* SYCalloutView.m */,
 				BEAC4C44156EAE6400C79F3F /* OMKMapTileProvider.h */,
 				BEAC4C45156EAE6400C79F3F /* OMKMapTileView.h */,
 				BEAC4C46156EAE6400C79F3F /* OMKMapTileView.m */,
@@ -305,6 +311,7 @@
 				BEAC4C95156EAE6400C79F3F /* OMKTiledLayer.h in Headers */,
 				BEAC4C9B156EAE6400C79F3F /* UIColor+OMKAdditions.h in Headers */,
 				BEAC4C9D156EAE6400C79F3F /* UIImage+OMKAdditions.h in Headers */,
+				7605E9A015909983007F171A /* SYCalloutView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +458,7 @@
 				BEAC4C9C156EAE6400C79F3F /* UIColor+OMKAdditions.m in Sources */,
 				BEAC4C9E156EAE6400C79F3F /* UIImage+OMKAdditions.m in Sources */,
 				76437E8B156EFC4A00598CDB /* OMKPolylineView.m in Sources */,
+				7605E9A115909983007F171A /* SYCalloutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

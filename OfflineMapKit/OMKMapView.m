@@ -37,10 +37,12 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
     __strong NSMutableSet *_annotations;
 
-    BOOL _delegateRespondsToViewForAnnotation;
-    BOOL _delegateRespondsToViewForOverlay;
-
     NSInteger minimumZoomLevel, maximumZoomLevel;
+
+    struct {
+        unsigned int respondsToViewForAnnotation:1;
+        unsigned int respondsToViewForOverlay:1;
+    } _delegateFlags;
 }
 
 @synthesize delegate = _delegate;
@@ -207,7 +209,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)addOverlay:(id <OMKOverlay>)overlay
 {
-    if (_delegateRespondsToViewForOverlay) {
+    if (_delegateFlags.respondsToViewForOverlay) {
         OMKOverlayView *view = [_delegate mapView:self viewForOverlay:overlay];
         OMKMapRect r = [view.overlay boundingMapRect];
         view.frame = CGRectMake(r.origin.x, r.origin.y, r.size.width, r.size.height);
@@ -227,8 +229,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 - (void)setDelegate:(id <OMKMapViewDelegate>)delegate
 {
     _delegate = delegate;
-    _delegateRespondsToViewForAnnotation = [delegate respondsToSelector:@selector(mapView:viewForAnnotation:)];
-    _delegateRespondsToViewForOverlay = [delegate respondsToSelector:@selector(mapView:viewForOverlay:)];
+    _delegateFlags.respondsToViewForAnnotation = [delegate respondsToSelector:@selector(mapView:viewForAnnotation:)];
+    _delegateFlags.respondsToViewForOverlay = [delegate respondsToSelector:@selector(mapView:viewForOverlay:)];
     minimumZoomLevel = maximumZoomLevel = 0;
     [self updateTileSize];
     [_scrollView updateZoomScales];
@@ -623,7 +625,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (OMKAnnotationView *)viewForAnnotation:(id<OMKAnnotation>)annotation
 {
-    if (_delegateRespondsToViewForAnnotation)
+    if (_delegateFlags.respondsToViewForAnnotation)
         return [_delegate mapView:self viewForAnnotation:annotation];
 
     return nil;

@@ -98,18 +98,19 @@ void simplifyDP( float tol, OMKMapPoint *v, int j, int k, int *mk )
         if (markers[i] == 1)
             newPointCount++;
     }
-    
-    OMKMapPoint newMapPoints[newPointCount];
-    int j = 0;
+
+    OMKMapPoint newMapPoints[newPointCount + 2]; // +2 = always adding starting and ending points
+    newMapPoints[0] = points[0];
+    int j = 1;
     for (int i = 0; i < pointCount; i++) {
         if (markers[i] == 1) {
             newMapPoints[j] = points[i];
             j++;
         }
     }
+    newMapPoints[newPointCount + 1] = points[pointCount - 1];
 
-    [self setPoints:newMapPoints count:newPointCount];
-    [self createPath];
+    [self setPoints:newMapPoints count:newPointCount + 2];
 }
 
 - (void)createPath

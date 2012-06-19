@@ -19,7 +19,6 @@
 {
 @package
     __unsafe_unretained OMKMapView *_mapView;
-    __strong OMKCalloutView *_calloutView;
 }
 
 - (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation;

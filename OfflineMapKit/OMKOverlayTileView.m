@@ -39,12 +39,12 @@
     return [OMKTiledLayer class];
 }
 
-#pragma mark - CALayer Overrides
-
-- (void)layoutSubviews
+- (void)didMoveToWindow
 {
     self.contentScaleFactor = 1;
 }
+
+#pragma mark - CALayer Overrides
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
 {

@@ -36,7 +36,7 @@
 
 #pragma mark - UIView Overrides
 
-- (void)layoutSubviews
+- (void)didMoveToWindow
 {
     self.contentScaleFactor = 1;
 }

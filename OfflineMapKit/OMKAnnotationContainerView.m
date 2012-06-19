@@ -7,18 +7,19 @@
 
 #import "OMKAnnotationContainerView.h"
 #import "OMKAnnotationView.h"
-#import "OMKCalloutView.h"
 #import "OMKPointAnnotation.h"
-
 #import "OfflineMapKit-Private.h"
-
 #import "UIImage+OMKAdditions.h"
+
+#import "SYCalloutView.h"
 
 @implementation OMKAnnotationContainerView
 {
     __strong OMKAnnotationView *_activeAnnotationView;
     __strong NSMutableArray *_annotationViews;
-    
+
+    __strong SYCalloutView *_calloutView;
+
     __strong NSMutableDictionary *_reusableAnnotationViews;
 
     __strong UIImageView *_userHeadingView;
@@ -41,7 +42,8 @@
         _userLocationView.hidden = YES;
         [self addSubview:_userLocationView];
         
-        _calloutView = [[OMKCalloutView alloc] initWithFrame:CGRectZero];
+        _calloutView = [[SYCalloutView alloc] initWithFrame:CGRectZero];
+        _calloutView.canAnchorFromBottom = NO;
         _calloutView.hidden = YES;
         [self addSubview:_calloutView];
 
@@ -127,10 +129,44 @@
 
 #pragma mark - Callout
 
-- (CGPoint)calloutCenterPointForAnnotationView:(OMKAnnotationView *)view
+- (CGPoint)calloutAnchorPointForAnnotationView:(OMKAnnotationView *)view
 {
     return CGPointMake(CGRectGetMidX(_activeAnnotationView.frame) + _activeAnnotationView.calloutOffset.x,
-                       CGRectGetMinY(_activeAnnotationView.frame) + _activeAnnotationView.calloutOffset.y + 10);
+                       CGRectGetMinY(_activeAnnotationView.frame) + _activeAnnotationView.calloutOffset.y);
+}
+
+- (void)scrollMapIfNeededForCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated
+{
+    CGPoint realAnchorPoint;
+    CGRect realFrame;
+    CGPoint anchorPoint = [self calloutAnchorPointForAnnotationView:_activeAnnotationView];
+
+    [_calloutView getRealAnchorPoint:&realAnchorPoint frame:&realFrame forAnchorPoint:anchorPoint bounds:_mapView.scrollView.bounds];
+
+    NSLog(@"realAnchor.x = %f, anchor.x = %f", realAnchorPoint.x, anchorPoint.x);
+    NSLog(@"realAnchor.y = %f, anchor.y = %f", realAnchorPoint.y, anchorPoint.y);
+    NSLog(@"callout frame = {{ %f, %f }, { %f %f }}", realFrame.origin.x, realFrame.origin.y, realFrame.size.width, realFrame.size.height);
+    CGFloat scrollX = realAnchorPoint.x - anchorPoint.x;
+    CGFloat scrollY = 0;
+
+    CGRect bounds = _mapView.scrollView.bounds;
+    if (CGRectGetMinY(realFrame) < CGRectGetMinY(bounds)) {
+        scrollY = CGRectGetMinY(bounds) - CGRectGetMinY(realFrame);
+    }
+
+    CGRect newBounds = CGRectMake(bounds.origin.x - scrollX,
+                                  bounds.origin.y - scrollY,
+                                  bounds.size.width,
+                                  bounds.size.height);
+
+    if (animated) {
+        [UIView animateWithDuration:.175 animations:^{
+            _mapView.scrollView.bounds = newBounds;
+        }];
+    }
+    else {
+        _mapView.scrollView.bounds = newBounds;
+    }
 }
 
 - (void)showCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated
@@ -143,36 +179,16 @@
     _activeAnnotationView = annotationView;
 
     _calloutView.hidden = YES;
-    _calloutView.transform = CGAffineTransformIdentity;
-    
-    _calloutView.center = [self calloutCenterPointForAnnotationView:_activeAnnotationView];
 
     _calloutView.title = annotationView.annotation.title;
     _calloutView.subtitle = annotationView.annotation.subtitle;
-    _calloutView.rightCalloutAccessoryView = annotationView.rightCalloutAccessoryView;
+    _calloutView.rightView = annotationView.rightCalloutAccessoryView;
 
-    [_calloutView performSelector:@selector(resize)];
-    
-    if (animated)
-        [self animateCalloutAppearance];
-}
+    [self scrollMapIfNeededForCalloutForAnnotationView:annotationView animated:animated];
 
-- (void)animateCalloutAppearance
-{
-    _calloutView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-    _calloutView.hidden = NO;
-
-    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationCurveEaseIn animations:^{
-        _calloutView.transform = CGAffineTransformMakeScale(1.1, 1.1);
-    } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.075 animations:^{
-            _calloutView.transform = CGAffineTransformMakeScale(0.95, 0.95);
-        } completion:^(BOOL finished){
-            [UIView animateWithDuration:0.075 animations:^{
-                _calloutView.transform = CGAffineTransformIdentity;
-            }];
-        }];
-    }];
+    [_calloutView setAnchorPoint:[self calloutAnchorPointForAnnotationView:_activeAnnotationView]
+                    boundaryRect:_mapView.scrollView.bounds
+                        animated:animated];
 }
 
 - (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation
@@ -189,6 +205,7 @@
         view.layer.zPosition = -annotation.coordinate.latitude + 90;
         [self addSubview:view];
         _viewsSorted = NO;
+        [self setNeedsLayout];
     }
 }
 
@@ -270,7 +287,14 @@
     }
 
     if (_activeAnnotationView && !_calloutView.hidden) {
-        _calloutView.center = [self calloutCenterPointForAnnotationView:_activeAnnotationView];
+        if (!_calloutView.animatingFrame) {
+            CGPoint anchorPoint = [self calloutAnchorPointForAnnotationView:_activeAnnotationView];
+            [_calloutView setAnchorPoint:anchorPoint];
+
+            NSLog(@"anchor point = { %f, %f }", anchorPoint.x, anchorPoint.y);
+            NSLog(@"callout frame = {{ %f, %f }, { %f %f }}", _calloutView.frame.origin.x,
+                  _calloutView.frame.origin.y, _calloutView.frame.size.width, _calloutView.frame.size.height);
+        }
     }
     
     if (!_userLocationView.hidden) {
