@@ -143,9 +143,6 @@
 
     [_calloutView getRealAnchorPoint:&realAnchorPoint frame:&realFrame forAnchorPoint:anchorPoint bounds:_mapView.scrollView.bounds];
 
-    NSLog(@"realAnchor.x = %f, anchor.x = %f", realAnchorPoint.x, anchorPoint.x);
-    NSLog(@"realAnchor.y = %f, anchor.y = %f", realAnchorPoint.y, anchorPoint.y);
-    NSLog(@"callout frame = {{ %f, %f }, { %f %f }}", realFrame.origin.x, realFrame.origin.y, realFrame.size.width, realFrame.size.height);
     CGFloat scrollX = realAnchorPoint.x - anchorPoint.x;
     CGFloat scrollY = 0;
 
@@ -171,8 +168,6 @@
 
 - (void)showCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated
 {
-//    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-
     if (_activeAnnotationView == annotationView && !_calloutView.hidden)
         return;
 
@@ -290,10 +285,6 @@
         if (!_calloutView.animatingFrame) {
             CGPoint anchorPoint = [self calloutAnchorPointForAnnotationView:_activeAnnotationView];
             [_calloutView setAnchorPoint:anchorPoint];
-
-            NSLog(@"anchor point = { %f, %f }", anchorPoint.x, anchorPoint.y);
-            NSLog(@"callout frame = {{ %f, %f }, { %f %f }}", _calloutView.frame.origin.x,
-                  _calloutView.frame.origin.y, _calloutView.frame.size.width, _calloutView.frame.size.height);
         }
     }
     
