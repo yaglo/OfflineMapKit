@@ -18,10 +18,12 @@
 @synthesize calloutOffset = _calloutOffset;
 @synthesize canShowCallout;
 @synthesize centerOffset = _centerOffset;
+@synthesize highlighted = _highlighted;
 @synthesize image = _image;
 @synthesize reuseIdentifier = _reuseIdentifier;
-@synthesize rightView;
+@synthesize rightView = _rightView;
 @synthesize rightCalloutAccessoryView = _rightCalloutAccessoryView;
+@synthesize selected = _selected;
 
 - (id)initWithAnnotation:(id<OMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,6 +32,9 @@
         self.annotation = annotation;
         self.multipleTouchEnabled = YES;
         _reuseIdentifier = [reuseIdentifier copy];
+
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView.userInteractionEnabled = YES;
 
         NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
         NSString *trimmedTitle = [[_annotation title] stringByTrimmingCharactersInSet:whitespaceSet];
@@ -88,12 +93,16 @@
 
     _image = image;
 
-    [_imageView removeFromSuperview];
-
     if (_image) {
-        _imageView = [[UIImageView alloc] initWithImage:_image];
-        _imageView.userInteractionEnabled = YES;
-        [self addSubview:_imageView];
+        _imageView.image = _image;
+
+        if (!_imageView.superview) {
+            [self addSubview:_imageView];
+            [self sendSubviewToBack:_imageView];
+        }
+    }
+    else {
+        [_imageView removeFromSuperview];
     }
 
     self.bounds = CGRectMake(0, 0, _image.size.width, _image.size.height);

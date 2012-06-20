@@ -28,7 +28,7 @@
 - (OMKAnnotationView *)findViewForAnnotation:(id <OMKAnnotation>)annotation;
 - (void)selectAnnotation:(id <OMKAnnotation>)annotation animated:(BOOL)animated;
 - (void)selectAnnotationView:(OMKAnnotationView *)view;
-- (void)showCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated;
+- (void)selectAndShowCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated;
 
 @property (nonatomic) OMKUserTrackingMode userTrackingMode;
 

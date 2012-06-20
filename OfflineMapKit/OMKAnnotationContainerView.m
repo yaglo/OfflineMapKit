@@ -166,12 +166,13 @@
     }
 }
 
-- (void)showCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated
+- (void)selectAndShowCalloutForAnnotationView:(OMKAnnotationView *)annotationView animated:(BOOL)animated
 {
     if (_activeAnnotationView == annotationView && !_calloutView.hidden)
         return;
 
     _activeAnnotationView = annotationView;
+    _activeAnnotationView.selected = YES;
 
     _calloutView.hidden = YES;
 
@@ -226,6 +227,7 @@
 
 - (void)deselectActiveAnnotationView
 {
+    _activeAnnotationView.selected = NO;
     _activeAnnotationView.layer.zPosition = -_activeAnnotationView.annotation.coordinate.latitude;
     _activeAnnotationView = nil;
     _calloutView.hidden = YES;
@@ -250,13 +252,15 @@
     OMKAnnotationView *v = [self findViewForAnnotation:annotation];
 
     if (v.canShowCallout)
-        [self showCalloutForAnnotationView:v animated:animated];
+        [self selectAndShowCalloutForAnnotationView:v animated:animated];
 }
 
 - (void)selectAnnotationView:(OMKAnnotationView *)view
 {
+    _activeAnnotationView.selected = NO;
+
     if (view.canShowCallout)
-        [self showCalloutForAnnotationView:view animated:YES];
+        [self selectAndShowCalloutForAnnotationView:view animated:YES];
 }
 
 - (void)layoutSubviews

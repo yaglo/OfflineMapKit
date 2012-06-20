@@ -21,6 +21,9 @@
 
 @property (nonatomic, readonly) NSString *reuseIdentifier;
 
+@property (nonatomic, getter=isHighlighted) BOOL highlighted;
+@property (nonatomic, getter=isSelected) BOOL selected;
+
 - (id)initWithAnnotation:(id <OMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 @property (nonatomic, strong) id <OMKAnnotation> annotation;
 
