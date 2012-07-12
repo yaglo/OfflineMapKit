@@ -16,7 +16,7 @@
     OMKMapRect _boundingMapRect;
 }
 
-@property (nonatomic, readonly) id <OMKOverlay> overlay;
+@property (nonatomic, strong, readonly) id <OMKOverlay> overlay;
 
 - (id)initWithOverlay:(id <OMKOverlay>)overlay;
 

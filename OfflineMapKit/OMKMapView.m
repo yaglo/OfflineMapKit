@@ -48,7 +48,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 @synthesize delegate = _delegate;
 @synthesize fetchesTilesAroundVisibleArea;
 @synthesize tileProvider = _tileProvider;
-@synthesize showsUserLocation;
+@synthesize showsUserLocation = _showsUserLocation;
 @synthesize userTrackingMode = _userTrackingMode;
 
 - (void)dealloc
@@ -122,6 +122,9 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         _annotations = [NSMutableSet set];
 
         [self zoomToLocationCoordinate:CLLocationCoordinate2DMake(OMKDefaultLatitude, OMKDefaultLongitude) zoomLevel:OMKDefaultZoomLevel animated:NO];
+
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
     }
     return self;
 }
@@ -138,6 +141,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         _locationManager.delegate = nil;
         [_locationManager stopUpdatingLocation];
         [_locationManager stopUpdatingHeading];
+        _locationManager = nil;
     }
     else {
         _locationManager.delegate = self;
@@ -147,23 +151,23 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)layoutSubviews
 {
+    topView.frame = self.bounds;
     _scrollView.frame = topView.bounds;
 }
 
 #pragma mark - User Location
 
-- (void)setShowsUserLocation:(BOOL)ifShowsUserLocation
+- (void)setShowsUserLocation:(BOOL)showsUserLocation
 {
-    showsUserLocation = ifShowsUserLocation;
+    _showsUserLocation = showsUserLocation;
 
-    if (showsUserLocation) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
+    if (_showsUserLocation) {
+        [_locationManager startUpdatingLocation];
     }
     else {
         [_locationManager stopUpdatingLocation];
         [_locationManager stopUpdatingHeading];
-        _locationManager = nil;
+        _locationManager.delegate = nil;
     }
 }
 
@@ -297,7 +301,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
     CGFloat zoomScale;
 
     if (zoomLevel < [self minimumZoomLevel]) {
-        zoomLevel = -1;
+//        zoomLevel = -1;
         zoomScale = _scrollView.zoomScale;
     }
     else {
