@@ -27,10 +27,10 @@ CLLocationCoordinate2D OMKCoordinateForMapPoint(OMKMapPoint mapPoint)
 
 BOOL OMKMapRectIntersectsRect(OMKMapRect rect1, OMKMapRect rect2)
 {
-	if (OMKMapRectGetMaxY(rect1) < OMKMapRectGetMinY(rect2))
+    if (OMKMapRectGetMaxY(rect1) < OMKMapRectGetMinY(rect2))
         return NO;
 
-	if (OMKMapRectGetMinY(rect1) > OMKMapRectGetMaxY(rect2))
+    if (OMKMapRectGetMinY(rect1) > OMKMapRectGetMaxY(rect2))
         return NO;
 
     if (OMKMapRectGetMaxX(rect1) < OMKMapRectGetMinX(rect2))

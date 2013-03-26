@@ -21,7 +21,7 @@
     __unsafe_unretained OMKMapView *_mapView;
 }
 
-- (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation;
+- (UIView *)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation;
 - (void)annotationView:(OMKAnnotationView *)view calloutAccessoryTapped:(UIControl *)calloutAccessoryControl;
 - (OMKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
 - (void)deselectActiveAnnotationView;

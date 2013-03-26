@@ -25,4 +25,7 @@
 - (OMKZoomLevel)minimumZoomLevelForMapView:(OMKMapView *)mapView;
 - (OMKZoomLevel)maximumZoomLevelForMapView:(OMKMapView *)mapView;
 
+- (void)mapView:(OMKMapView *)mapView didSelectAnnotationView:(OMKAnnotationView *)view;
+- (void)mapView:(OMKMapView *)mapView didAddAnnotationViews:(NSArray *)views;
+
 @end

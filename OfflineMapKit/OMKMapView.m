@@ -53,6 +53,9 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)dealloc
 {
+    _tileProvider = nil;
+    _mapTileView.mapView = nil;
+    _scrollView.delegate = nil;
     _locationManager.delegate = nil;
     [_locationManager stopUpdatingLocation];
     [_locationManager stopUpdatingHeading];
@@ -184,7 +187,13 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         return;
 
     [_annotations addObject:annotation];
-    [_annotationContainerView addAnnotationViewForAnnotation:annotation];
+    id view = [_annotationContainerView addAnnotationViewForAnnotation:annotation];
+
+    if (view) {
+        if ([_delegate respondsToSelector:@selector(mapView:didAddAnnotationViews:)]) {
+            [_delegate mapView:self didAddAnnotationViews:[NSArray arrayWithObject:view]];
+        }
+    }
 }
 
 - (void)addAnnotations:(NSArray *)annotations
@@ -194,8 +203,19 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
     [_annotations addObjectsFromArray:annotations];
 
+    NSMutableArray *views = [[NSMutableArray alloc] init];
+
     for (id<OMKAnnotation> annotation in annotations) {
-        [_annotationContainerView addAnnotationViewForAnnotation:annotation];
+        id view = [_annotationContainerView addAnnotationViewForAnnotation:annotation];
+
+        if (view)
+            [views addObject:view];
+    }
+
+    if ([views count] > 0) {
+        if ([_delegate respondsToSelector:@selector(mapView:didAddAnnotationViews:)]) {
+            [_delegate mapView:self didAddAnnotationViews:[NSArray arrayWithObject:[views copy]]];
+        }
     }
 }
 
@@ -298,6 +318,8 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated animateDistance:(BOOL)animateDistance
 {
+//    NSLog(@"bounds = %@", NSStringFromCGRect(_scrollView.bounds));
+//    NSLog(@"1");
     CGFloat zoomScale;
 
     if (zoomLevel < [self minimumZoomLevel]) {
@@ -308,7 +330,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         zoomLevel = MIN(zoomLevel, [self maximumZoomLevel]);
         zoomScale = [self zoomScaleForZoomLevel:zoomLevel];
     }
-
+//    NSLog(@"2");
     OMKMapPoint targetMapPoint = OMKMapPointForCoordinate(coordinate);
 
     CGSize targetRectSize = CGSizeMake(_scrollView.bounds.size.width / zoomScale,
@@ -318,8 +340,10 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
                                        targetMapPoint.y - targetRectSize.height / 2,
                                        targetRectSize.width,
                                        targetRectSize.height);
-
+//    NSLog(@"targetZoomRect = %@", NSStringFromCGRect(targetZoomRect));
+//    NSLog(@"3");
     if (animated) {
+//        NSLog(@"4");
         _scrollView.backgroundColor = [UIColor omk_zoomingTileBackgroundColor];
 
         // Нужно только проскроллить на том же масштабе
@@ -328,45 +352,54 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
             CGPoint visibleMapCenterPoint = CGPointMake(CGRectGetMidX(_scrollView.bounds), CGRectGetMidY(_scrollView.bounds));
             CGFloat distance = sqrtf(powf(pointToScroll.x - visibleMapCenterPoint.x, 2) + powf(pointToScroll.y - visibleMapCenterPoint.y, 2));
-
+//            NSLog(@"5");
             // Если точка далеко, сначала удаляемся, потом приближаем
-            if (animateDistance && distance > 1000)
-            {
-                CLLocationCoordinate2D centerCoordinate = self.centerCoordinate;
-                [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) - 4 animated:YES];
-
-                [self omk_performBlock:^{
-                    [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) animated:YES];
-                } afterDelay:0.5];
-            }
-            else {
+//            if (animateDistance && distance > 1000)
+//            {
+//                    NSLog(@"6");
+//                CLLocationCoordinate2D centerCoordinate = self.centerCoordinate;
+//                [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) - 4 animated:YES];
+//
+//                [self omk_performBlock:^{
+//                    [self zoomToLocationCoordinate:centerCoordinate zoomLevel:log2f(zoomScale) animated:YES];
+//                } afterDelay:0.5];
+//            }
+//            else {
+//                NSLog(@"7");
                 // Время анимации зависит от расстояния до точки от текущего центра
                 CGFloat animationDuration = MIN(1, distance / 400) * OMKScrollingDuration;
 
                 [UIView animateWithDuration:animationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-
+//                    NSLog(@"8");
                     CGRect targetRect = CGRectMake(pointToScroll.x - _scrollView.bounds.size.width / 2,
                                                    pointToScroll.y - _scrollView.bounds.size.height / 2,
                                                    _scrollView.bounds.size.width,
                                                    _scrollView.bounds.size.height);
 
+//                    NSLog(@"targetRect = %@", NSStringFromCGRect(targetRect));
+
                     [_scrollView scrollRectToVisible:targetRect animated:NO];
                 } completion:^(BOOL finished){
+//                    NSLog(@"9");
                     if (finished) {
                         _scrollView.backgroundColor = [UIColor omk_loadingTileBackgroundColor];
                     }
                 }];
-            }
+//            }
         }
         // Нужно масштабировать
         else {
             if (zoomScale / _scrollView.zoomScale <= 4) {
+//                NSLog(@"11");
                 [_scrollView zoomToRect:targetZoomRect animated:YES];
             }
             else {
+//                NSLog(@"12");
                 [UIView animateWithDuration:OMKZoomingDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//                    NSLog(@"13");
                     [_scrollView zoomToRect:targetZoomRect animated:NO];
                 } completion:^(BOOL finished){
+//                    NSLog(@"14");
                     if (finished) {
                         _scrollView.backgroundColor = [UIColor omk_loadingTileBackgroundColor];
                     }
@@ -375,6 +408,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         }
     }
     else {
+//        NSLog(@"15");
         [_scrollView zoomToRect:targetZoomRect animated:NO];
     }
 }
@@ -429,6 +463,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (void)setUserTrackingMode:(OMKUserTrackingMode)userTrackingMode
 {
+//    NSLog(@"setUserTrackingMode: %d, User coordinate = { %f %f }", userTrackingMode, _locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude);
     if (_userTrackingMode == userTrackingMode)
         return;
 
@@ -609,7 +644,7 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager
 {
-    return YES;
+    return NO;
 }
 
 #pragma mark - Private API
@@ -641,7 +676,6 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         [_delegate mapView:self annotationView:annotationView calloutAccessoryControlTapped:calloutAccessoryControl];
     }
 }
-
 - (void)deselectActiveAnnotationView
 {
     [_annotationContainerView deselectActiveAnnotationView];
@@ -667,6 +701,12 @@ const CGSize OMKOpenStreetMapAttributionPadding = { 6, 6 };
         higherZoomLevel += 1;
 
     return higherZoomLevel;
+}
+
+- (void)didSelectAnnotationView:(OMKAnnotationView *)view
+{
+    if ([self.delegate respondsToSelector:@selector(mapView:didSelectAnnotationView:)])
+        [self.delegate mapView:self didSelectAnnotationView:view];
 }
 
 @end

@@ -48,12 +48,14 @@
 
 - (CGImageRef)fetchTileForRect:(CGRect)rect scale:(CGFloat)scale
 {
+    if (!self.mapView) return NULL;
+
     if (CGSizeEqualToSize(_tileSize, CGSizeZero)) {
         _tileSize = self.tileSize;
     }
 
     UIImage *image = nil;
-    id<OMKMapTileProvider> tileProvider = _mapView.tileProvider;
+    id<OMKMapTileProvider> tileProvider = self.mapView.tileProvider;
     OMKTileKey *tileKey = [OMKTileKey tileKeyForX:(CGRectGetMinX(rect) * scale) / _tileSize.width
                                                 Y:(CGRectGetMinY(rect) * scale) / _tileSize.height
                                         zoomLevel:OMKMaxZoomLevel + 8 - (int)log2f(rect.size.width)];

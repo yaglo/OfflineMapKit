@@ -171,6 +171,7 @@
     if (_activeAnnotationView == annotationView && !_calloutView.hidden)
         return;
 
+    _activeAnnotationView.selected = NO;
     _activeAnnotationView = annotationView;
     _activeAnnotationView.selected = YES;
 
@@ -185,9 +186,11 @@
     [_calloutView setAnchorPoint:[self calloutAnchorPointForAnnotationView:_activeAnnotationView]
                     boundaryRect:_mapView.scrollView.bounds
                         animated:animated];
+
+    [_mapView didSelectAnnotationView:_activeAnnotationView];
 }
 
-- (void)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation
+- (UIView *)addAnnotationViewForAnnotation:(id <OMKAnnotation>)annotation
 {
     OMKAnnotationView *view = [_mapView viewForAnnotation:annotation];
 
@@ -203,6 +206,7 @@
         _viewsSorted = NO;
         [self setNeedsLayout];
     }
+    return view;
 }
 
 - (void)annotationView:(OMKAnnotationView *)annotationView calloutAccessoryTapped:(UIControl *)calloutAccessoryControl
@@ -257,6 +261,9 @@
 
 - (void)selectAnnotationView:(OMKAnnotationView *)view
 {
+    if (_activeAnnotationView == view)
+        return;
+
     _activeAnnotationView.selected = NO;
 
     if (view.canShowCallout)

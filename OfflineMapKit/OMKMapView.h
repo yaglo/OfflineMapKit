@@ -54,4 +54,6 @@
 
 - (void)zoomToLocationCoordinate:(CLLocationCoordinate2D)coordinate zoomLevel:(NSInteger)zoomLevel animated:(BOOL)animated;
 
+- (void)didSelectAnnotationView:(OMKAnnotationView *)view;
+
 @end
